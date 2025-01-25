@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px;
+    background: linear-gradient(to right, #f5f5f5, #e0e0e0);
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+h1 {
+    font-weight: 500;
+    font-size: 3.5rem;
+    color: #37474f;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    font-size: 2rem;
+    color: #546e7a;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#Presentation {
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+}
+
+#Presentation img {
+    max-width: 300px;
+}
+
+h6,
+h3,
+#footer_nav {
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.skill-list li {
+    background-color: #ffffff;
+    border: 1px solid #b0bec5;
+    border-radius: 0.25rem;
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.skill-project {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.skill-list li:hover {
+    background-color: #e0f7fa;
+    transform: scale(1.05);
+}
+
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.navbar:hover {
+    background-color: #e0f7fa;
+}
+
+.nav-link {
+    color: #546e7a;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #00796b;
+}
+
+#experiences {
+    margin: 4rem 0;
+}
+
+.card-title {
+    font-weight: 600;
+    color: #37474f;
+}
+
+.card-text {
+    color: #546e7a;
+}
