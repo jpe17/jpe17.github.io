@@ -117,3 +117,11 @@ h3,
 .card-text {
     color: #546e7a;
 }
+
+.icon {
+    max-width: 32px;
+    max-height: 32px;
+    filter: grayscale(100%);
+    padding: 5px;
+    vertical-align: middle;
+}
