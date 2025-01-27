@@ -68,12 +68,35 @@ h3,
 }
 
 .card {
+    height: auto;
+    margin-bottom: 1rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: none;
     border-radius: 0.5rem;
     background-color: #ffffff;
     padding: 1.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 0.5rem;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0.5rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #37474f;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: #546e7a;
 }
 
 .card:hover {
@@ -109,19 +132,19 @@ h3,
     margin: 4rem 0;
 }
 
-.card-title {
-    font-weight: 600;
-    color: #37474f;
-}
-
-.card-text {
-    color: #546e7a;
-}
-
 .icon {
     max-width: 32px;
     max-height: 32px;
     filter: grayscale(100%);
     padding: 5px;
     vertical-align: middle;
+}
+
+.company-logo {
+    max-width: 50px;
+    margin-bottom: 1rem;
+}
+
+.skill-list .list-group-item {
+    border: none;
 }
