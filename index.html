@@ -1,521 +1,72 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>João Esteves</title>
-    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500&display=swap"
-        rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <link rel="manifest" href="favicon/site.webmanifest">
-    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
-
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="João Esteves - Lead Solution Engineer" />
-    <meta property="og:description"
-        content="Hi, I am João Esteves, a Software Engineer with a passion for robotics, data analysis, and software development." />
-    <meta property="og:image" content="https://jpe17.github.io/images/projects/website.png" />
-    <meta property="og:url" content="https://jpe17.github.io/" />
-    <meta property="og:type" content="website" />
-</head>
-
-<body class="bg-light">
-    <nav class="navbar navbar-expand-md navbar-light">
-        <div class="container-fluid">
-            <span class="h1">João Esteves</span>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about"><span class="mb-0 h4">About</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects"><span class="mb-0 h4">Projects</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills"><span class="mb-0 h4">Skills</span></a>
-                    </li>
-                    <li class="nav-item"></li>
-                    <a class="nav-link" href="#contacts"><span class="mb-0 h4">Contacts</span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <section id="Presentation">
-        <div class="container-fluid text-center">
-            <img src="images/photo.jpg" class="img-fluid rounded-circle" alt="Responsive image">
-        </div>
-
-        <div class="container-fluid text-center mt-4">
-            <h6>Nice to meet you, I'm</h6>
-            <h1 class=" mt-3">João Esteves</h1>
-            <h3 class="mb-3">Lead Solutions Engineer</h3>
-        </div>
-
-        <section id="social-media">
-            <div class="container-fluid justify-content-center d-flex gap-3">
-
-                <a href="https://www.linkedin.com/in/joaoesteves7/">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                        class="bi bi-linkedin" viewBox="0 0 16 16">
-                        <path
-                            d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
-                    </svg>
-                </a>
-
-                <a class="text-dark" href="https://github.com/jpe17">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                        class="bi bi-github" viewBox="0 0 16 16">
-                        <path
-                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
-                    </svg>
-                </a>
-            </div>
-        </section>
-
-    </section>
-
-    <section id="about" class="mb-5">
-        <div class="container-fluid text-center">
-            <h1>About</h1>
-
-            <div class="container my-4">
-                <div class="row justify-content-center">
-                    <div class="col-10 col-md-7 col-lg-5">
-                        <div class="card text-center border-secondary shadow-sm">
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <i class="bi bi-mortarboard-fill" style="font-size: 2rem;"></i>
-                                </div>
-                                <h5 class="card-title fw-bold">Imperial College London</h5>
-                                <p class="card-text">MEng Aerospace Engineering </p>
-                            </div>
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card-body">
+                <div class="card text-center border-secondary shadow-sm">
+                    <div class="row justify-content-center m-3 d-flex align-items-center">
+                        <div class="col-12 col-md-6">
+                            <h5 class="card-title fw-bold">HackerNews Score Predictor
+                            </h5>
+                            <p class="card-text">A machine learning project that predicts HackerNews post scores using title embeddings and feature engineering with custom Word2Vec implementation.</p>
+                            <a href="https://github.com/jpe17/HackerNews-Score-Predictor"
+                                class="btn btn-outline-dark d-none d-md-inline">Repository</a>
                         </div>
-                    </div>
-                    <div class="col-10 col-md-7 col-lg-5 mt-3 mt-md-0">
-                        <div class="card text-center border-secondary shadow-sm">
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <i class="bi bi-mortarboard-fill" style="font-size: 2rem;"></i>
-                                </div>
-                                <h5 class="card-title fw-bold">Harvard University</h5>
-                                <p class="card-text">Applied Computational Science Research </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container my-4">
-                <div class="row justify-content-center">
-                    <div class="col-10 col-md-8">
-                        <p class="lead">Hi, I'm João.</p>
-                        <p>With a background in aerospace engineering, I've found my passion at the crossroads of data, technology, and impact. As a Lead Solution Engineer at OpenSC, I help build transparent, ethical supply chains that drive sustainability and uphold human rights.</p>
-                        <p>I'm all about using innovation to solve real-world challenges that matter. Outside of work, I love exploring new cultures, playing bass, and collaborating on ideas that make a difference.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="experiences" class="my-4">
-        <div class="container-fluid text-center">
-            <h1>Experiences</h1>
-        </div>
-
-        <div class="container my-4">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <div class="card text-center border-secondary shadow-sm mb-3">
-                            <div class="row justify-content-center m-3 d-flex align-items-center">
-                                <div class="col-12 col-md-4">
-                                    <img src="images/logos/opensc.png" alt="OpenSC Logo" class="company-logo rounded-circle" style="max-width: 60px; max-height: 60px;">
-                                </div>
-                                <div class="col-12 col-md-8 text-start">
-                                    <h5 class="card-title fw-bold">Lead Solution Engineer @ OpenSC</h5>
-                                    <p class="card-text">Building transparent, ethical supply chains that drive sustainability and uphold human rights.</p>
-                                    <p class="card-text">Duration: Nov 2024 - Present</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="card text-center border-secondary shadow-sm mb-3">
-                            <div class="row justify-content-center m-3 d-flex align-items-center">
-                                <div class="col-12 col-md-4">
-                                    <img src="images/logos/optibus.webp" alt="Optibus Logo" class="company-logo rounded-circle" style="max-width: 40px; max-height: 40px;">
-                                </div>
-                                <div class="col-12 col-md-8 text-start">
-                                    <h5 class="card-title fw-bold">Lead Solutions Architect @ Optibus</h5>
-                                    <p class="card-text">Developed CO2 reduction solutions for large public transport operators deployed in 5,000+ cities.</p>
-                                    <p class="card-text">Duration: Nov 2023 - Oct 2024</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="card text-center border-secondary shadow-sm mb-3">
-                            <div class="row justify-content-center m-3 d-flex align-items-center">
-                                <div class="col-12 col-md-4">
-                                    <img src="images/logos/optibus.webp" alt="Optibus Logo" class="company-logo rounded-circle" style="max-width: 40px; max-height: 40px;">
-                                </div>
-                                <div class="col-12 col-md-8 text-start">
-                                    <h5 class="card-title fw-bold">Lead Solutions Engineer @ Optibus</h5>
-                                    <p class="card-text">Mentored engineering teams and implemented security protocols for EMEA SaaS infrastructure.</p>
-                                    <p class="card-text">Duration: Jul 2021 - Oct 2023</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="card text-center border-secondary shadow-sm mb-3">
-                            <div class="row justify-content-center m-3 d-flex align-items-center">
-                                <div class="col-12 col-md-4">
-                                    <img src="images/logos/kalab.png" alt="KALAB Logo" class="company-logo rounded-circle" style="max-width: 40px; max-height: 40px;">
-                                </div>
-                                <div class="col-12 col-md-8 text-start">
-                                    <h5 class="card-title fw-bold">Chief Technology Officer @ KALAB</h5>
-                                    <p class="card-text">Directed development of music platform achieving 400+ bookings and 1000+ users.</p>
-                                    <p class="card-text">Duration: Oct 2019 - Oct 2020</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="card text-center border-secondary shadow-sm mb-3">
-                            <div class="row justify-content-center m-3 d-flex align-items-center">
-                                <div class="col-12 col-md-4">
-                                    <img src="images/logos/fromdenimtogreen.png" alt="From Denim to Green Logo" class="company-logo rounded-circle" style="max-width: 40px; max-height: 40px;">
-                                </div>
-                                <div class="col-12 col-md-8 text-start">
-                                    <h5 class="card-title fw-bold">Co-founder @ From Denim To Green</h5>
-                                    <p class="card-text">Created sustainable textile activism platform and Greenvolution Talks series.</p>
-                                    <p class="card-text">Duration: Oct 2018 - Jul 2020</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="card text-center border-secondary shadow-sm mb-3">
-                            <div class="row justify-content-center m-3 d-flex align-items-center">
-                                <div class="col-12 col-md-4">
-                                    <img src="images/logos/ceiia.jpg" alt="CEiiA Logo" class="company-logo rounded-circle" style="max-width: 40px; max-height: 40px;">
-                                </div>
-                                <div class="col-12 col-md-8 text-start">
-                                    <h5 class="card-title fw-bold">Product Development Intern @ CEiiA</h5>
-                                    <p class="card-text">Managed development of nanosatellite prototype for ocean surveillance.</p>
-                                    <p class="card-text">Duration: Jul 2018 - Aug 2019</p>
-                                </div>
-                            </div>
+                        <div class="col-12 col-md-6">
+                            <img src="images/projects/word_embeddings.png" class="img-fluid">
+                            <ul class="skill-project list-group list-group-horizontal mt-2 justify-content-center">
+                                <li class="list-group-item border-0">Python <i class="devicon-python-plain"></i>
+                                </li>
+                                <li class="list-group-item border-0">PyTorch <i class="devicon-pytorch-original"></i>   
+                                </li>
+                                <li class="list-group-item border-0">Streamlit <i class="devicon-streamlit-plain"></i>   
+                                </li>
+                                <li class="list-group-item border-0">FastAPI <i class="devicon-fastapi-plain"></i>   
+                                </li>
+                                <li class="list-group-item border-0">Docker <i class="devicon-docker-plain"></i>   
+                                </li>
+                                <li class="list-group-item border-0">PostgreSQL <i class="devicon-postgresql-plain"></i>   
+                                </li>
+                            </ul>
+                            <a href="https://github.com/jpe17/HackerNews-Score-Predictor"
+                                class="btn btn-outline-dark d-md-none">Repository</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section id="projects" class="mb-5">
-        <div class="container-fluid text-center">
-            <h1>Projects</h1>
-        </div>
-
-        <div class="container my-4">
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <div class="card-body">
-                        <div class="card text-center border-secondary shadow-sm">
-                            <div class="row justify-content-center m-3 d-flex align-items-center">
-                                <div class="col-12 col-md-6">
-                                    <h5 class="card-title fw-bold">DeepNavierStokes: Solving the RANS equations for 1D channel flow using neural networks
-                                    </h5>
-                                    <p class="card-text">Lorem Ipsus</p>
-                                    <a href="https://github.com/jpe17/DeepNavierStokes"
-                                        class="btn btn-outline-dark d-none d-md-inline">Repository</a>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <img src="images/projects/neurodiffeq.png" class="img-fluid">
-                                    <ul
-                                        class="skill-project list-group list-group-horizontal mt-2 justify-content-center">
-                                        <li class="list-group-item border-0">Python <i class="devicon-python-plain"></i>
-                                        </li>
-                                        <li class="list-group-item border-0">PyTorch <i class="devicon-pytorch-original"></i>   
-                                        </li>
-                                        <li class="list-group-item border-0">Jupyter <i class="devicon-jupyter-plain"></i>
-                                        </li>
-                                        <li class="list-group-item border-0">Pandas <i class="devicon-pandas-plain"></i></li>
-                                    </ul>
-                                    <a href="https://github.com/jpe17/DeepNavierStokes"
-                                        class="btn btn-outline-dark d-md-none">Repository</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        <div class="container my-4">
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <div class="card-body">
-                        <div class="card text-center border-secondary shadow-sm">
-                            <div class="row justify-content-center m-3 d-flex align-items-center">
-                                <div class="col-12 col-md-6">
-                                    <h5 class="card-title fw-bold">BacklogBuddy: Agile Insights Dashboard
-                                    </h5>
-                                    <p class="card-text">Lorem Ipsus</p>
-                                    <a href="https://github.com/jpe17/BacklogBuddy"
-                                        class="btn btn-outline-dark d-none d-md-inline">Repository</a>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <img src="images/projects/neurodiffeq.png" class="img-fluid">
-                                    <ul
-                                        class="skill-project list-group list-group-horizontal mt-2 justify-content-center">
-                                        <li class="list-group-item border-0">Python <i class="devicon-python-plain"></i>
-                                        </li>
-                                        <li class="list-group-item border-0">Streamlit <i class="devicon-streamlit-plain"></i>   
-                                        </li>
-                                        <li class="list-group-item border-0">Plotly <i class="devicon-plotly-plain"></i>
-                                        </li>
-                                    </ul>
-                                    <a href="https://github.com/jpe17/BacklogBuddy"
-                                        class="btn btn-outline-dark d-md-none">Repository</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        <div class="container my-4">
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <div class="card-body">
-                        <div class="card text-center border-secondary shadow-sm">
-                            <div class="row justify-content-center m-3 d-flex align-items-center">
-                                <div class="col-12 col-md-6">
-                                    <h5 class="card-title fw-bold">BusDriver Syndicalist: Scheduling System for Buses and Drivers
-                                    </h5>
-                                    <p class="card-text">Lorem Ipsus</p>
-                                    <a href="https://github.com/jpe17/BusDriverSyndicalist"
-                                        class="btn btn-outline-dark d-none d-md-inline">Repository</a>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <img src="images/projects/neurodiffeq.png" class="img-fluid">
-                                    <ul
-                                        class="skill-project list-group list-group-horizontal mt-2 justify-content-center">
-                                        <li class="list-group-item border-0">Python <i class="devicon-python-plain"></i>
-                                        </li>
-                                        <li class="list-group-item border-0">Pytest <i class="devicon-pytest-plain"></i>   
-                                        </li>
-                                    </ul>
-                                    <a href="https://github.com/jpe17/BusDriverSyndicalist"
-                                        class="btn btn-outline-dark d-md-none">Repository</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        <div class="container my-4">
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <div class="card-body">
-                        <div class="card text-center border-secondary shadow-sm">
-                            <div class="row justify-content-center m-3 d-flex align-items-center">
-                                <div class="col-12 col-md-6">
-                                    <h5 class="card-title fw-bold">JokeJitsu: Joke Categorization
-                                    </h5>
-                                    <p class="card-text">Lorem Ipsus</p>
-                                    <a href="https://github.com/jpe17/JokeJitsu"
-                                        class="btn btn-outline-dark d-none d-md-inline">Repository</a>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <img src="images/projects/neurodiffeq.png" class="img-fluid">
-                                    <ul
-                                        class="skill-project list-group list-group-horizontal mt-2 justify-content-center">
-                                        <li class="list-group-item border-0">Python <i class="devicon-python-plain"></i>
-                                        </li>
-                                        <li class="list-group-item border-0">Docker <i class="devicon-docker-plain"></i>   
-                                        </li>
-                                        <li class="list-group-item border-0">FastAPI <i class="devicon-fastapi-plain"></i>   
-                                        </li>
-                                        <li class="list-group-item border-0">PostgreSQL <i class="devicon-postgresql-plain"></i>   
-                                        </li>
-                                        <li class="list-group-item border-0">AWS <i class="devicon-amazonwebservices-plain-wordmark"></i>   
-                                        </li>
-                                        <li class="list-group-item border-0">Bash <i class="devicon-bash-plain"></i>   
-                                        </li>
-                                    </ul>
-                                    <a href="https://github.com/jpe17/JokeJitsu"
-                                        class="btn btn-outline-dark d-md-none">Repository</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        <div class="container my-4">
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <div class="card-body">
-                        <div class="card text-center border-secondary shadow-sm">
-                            <div class="row justify-content-center m-3 d-flex align-items-center">
-                                <div class="col-12 col-md-6">
-                                    <h5 class="card-title fw-bold">HackerNews Score Predictor
-                                    </h5>
-                                    <p class="card-text">A machine learning project that predicts HackerNews post scores using title embeddings and feature engineering with custom Word2Vec implementation.</p>
-                                    <a href="https://github.com/jpe17/HackerNews-Score-Predictor"
-                                        class="btn btn-outline-dark d-none d-md-inline">Repository</a>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <img src="images/projects/word_embeddings.png" class="img-fluid">
-                                    <ul
-                                        class="skill-project list-group list-group-horizontal mt-2 justify-content-center">
-                                        <li class="list-group-item border-0">Python <i class="devicon-python-plain"></i>
-                                        </li>
-                                        <li class="list-group-item border-0">PyTorch <i class="devicon-pytorch-original"></i>   
-                                        </li>
-                                        <li class="list-group-item border-0">Streamlit <i class="devicon-streamlit-plain"></i>   
-                                        </li>
-                                        <li class="list-group-item border-0">FastAPI <i class="devicon-fastapi-plain"></i>   
-                                        </li>
-                                        <li class="list-group-item border-0">Docker <i class="devicon-docker-plain"></i>   
-                                        </li>
-                                        <li class="list-group-item border-0">PostgreSQL <i class="devicon-postgresql-plain"></i>   
-                                        </li>
-                                    </ul>
-                                    <a href="https://github.com/jpe17/HackerNews-Score-Predictor"
-                                        class="btn btn-outline-dark d-md-none">Repository</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </section>
-
-    <section id="skills" class="my-4">
-        <div class="container-fluid text-center">
-            <h1>Skills</h1>
-        </div>
-
-        <h3>Programming Languages</h3>
-
-        <ul class="skill-list list-group list-group-horizontal">
-            <li class="list-group-item">Python <i class="devicon-python-plain"></i></li>
-            <li class="list-group-item">SQL <i class="devicon-azuresqldatabase-plain"></i></li>
-            <li class="list-group-item">HTML <i class="devicon-html5-plain"></i></li>
-            <li class="list-group-item">CSS <i class="devicon-css3-plain"></i></li>
-            <li class="list-group-item">Matlab <i class="devicon-matlab-plain"></i></li>
-        </ul>
-
-        <h3 class="mt-2">Tools</h3>
-
-        <ul class="skill-list list-group list-group-horizontal">
-            <li class="list-group-item">Git <i class="devicon-git-plain"></i></li>
-            <li class="list-group-item">Docker <i class="devicon-docker-plain"></i></li>
-            <li class="list-group-item">Pytorch <i class="devicon-pytorch-original"></i></li>
-            <li class="list-group-item">Pandas <i class="devicon-pandas-plain"></i></li>
-            <li class="list-group-item">Postman <i class="devicon-postman-plain"></i></li>
-            <li class="list-group-item">PostgreSQL <i class="devicon-postgresql-plain"></i></li>
-            <li class="list-group-item">Matplotlib <i class="devicon-matplotlib-plain"></i></li>
-            <li class="list-group-item">Jupyter Notebooks <i class="devicon-jupyter-plain"></i></li>
-            <li class="list-group-item">Streamlit <i class="devicon-streamlit-plain"></i></li>
-            <li class="list-group-item">aws <i class="devicon-amazonwebservices-plain-wordmark"></i>
-                <li class="list-group-item">Dagster <img src="favicon/dagster-primary-mark.svg" width="25" height="25"> </li>
-            <li class="list-group-item">dbt <img src="favicon/dbt-bit_tm.svg" width="16" height="16"> </li>
-        </ul>
-
-        <h3 class="mt-2">Languages</h3>
-
-        <ul class="skill-list list-group list-group-horizontal">
-            <li class="list-group-item">Native Portuguese <span class="fi fi-pt"></span></li>
-            <li class="list-group-item">Fluent English <span class="fi fi-gb"></span></li>
-            <li class="list-group-item">Basic Spanish <span class="fi fi-es"></span></li>
-        </ul>
-
-    </section>
-
-    <section id="contacts">
-        <div class="container-fluid text-center">
-            <h1 class="mb-5">Contacts</h1>
-        </div>
-
-        <div class="container-fluid d-flex flex-wrap justify-content-center gap-3">
-
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-envelope"
-                viewBox="0 0 16 16">
-                <path
-                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
-            </svg>
-            <a class="nav-link text-dark" href="mailto:joaopaesteves@gmail.com">
-
-                <span>joaopaesteves99@gmail.com</span>
-            </a>
-
-
-            <a class="nav-link" href="https://www.linkedin.com/in/joaoesteves7/">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                    class="bi bi-linkedin" viewBox="0 0 16 16">
-                    <path
-                        d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
-                </svg>
-                <span>LinkedIn</span>
-            </a>
-
-
-
-            <a class="text-dark nav-link" href="https://github.com/jpe17">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-github"
-                    viewBox="0 0 16 16">
-                    <path
-                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
-                </svg>
-                <span>Github</span>
-            </a>
-        </div>
-    </section>
-
-    <div class="container">
-        <footer class="py-3 my-4">
-            <ul id="footer_nav" class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item">
-                    <a class="nav-link" href="#about"><span class="mb-0 h4 text-secondary">About</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#projects"><span class="mb-0 h4 text-secondary">Projects</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#skills"><span class="mb-0 h4 text-secondary">Skills</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contacts"><span class="mb-0 h4 text-secondary">Contacts</span></a>
-                </li>
-            </ul>
-            <p class="text-center text-body-secondary">Copyright &copy; 2025 João Esteves. All Rights Reserved.</p>
-        </footer>
     </div>
+</div>
 
-</body>
-
-<script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
-
-</html>
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card-body">
+                <div class="card text-center border-secondary shadow-sm">
+                    <div class="row justify-content-center m-3 d-flex align-items-center">
+                        <div class="col-12 col-md-6">
+                            <h5 class="card-title fw-bold">DeepNavierStokes: Solving the RANS equations for 1D channel flow using neural networks
+                            </h5>
+                            <p class="card-text">Lorem Ipsus</p>
+                            <a href="https://github.com/jpe17/DeepNavierStokes"
+                                class="btn btn-outline-dark d-none d-md-inline">Repository</a>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <img src="images/projects/neurodiffeq.png" class="img-fluid">
+                            <ul class="skill-project list-group list-group-horizontal mt-2 justify-content-center">
+                                <li class="list-group-item border-0">Python <i class="devicon-python-plain"></i>
+                                </li>
+                                <li class="list-group-item border-0">PyTorch <i class="devicon-pytorch-original"></i>   
+                                </li>
+                                <li class="list-group-item border-0">Jupyter <i class="devicon-jupyter-plain"></i>
+                                </li>
+                                <li class="list-group-item border-0">Pandas <i class="devicon-pandas-plain"></i></li>
+                            </ul>
+                            <a href="https://github.com/jpe17/DeepNavierStokes"
+                                class="btn btn-outline-dark d-md-none">Repository</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
