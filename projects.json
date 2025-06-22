@@ -1,0 +1,53 @@
+[
+  {
+    "title": "Two Tower Hybrid Search Engine",
+    "description": "A hybrid search engine combining keyword (TF-IDF) and semantic search using a Two-Tower neural network. Users can tune the balance between keyword and semantic relevance.",
+    "repoUrl": "https://github.com/jpe17/TwoTowerMLRetrieval",
+    "imageUrl": "images/projects/google_with_tuning_params.png",
+    "skills": [
+      { "name": "Python", "icon": "devicon-python-plain" },
+      { "name": "PyTorch", "icon": "devicon-pytorch-original" },
+      { "name": "FastAPI", "icon": "devicon-fastapi-plain" },
+      { "name": "Docker", "icon": "devicon-docker-plain" },
+      { "name": "Bash", "icon": "devicon-bash-plain" }
+    ]
+  },
+  {
+    "title": "HackerNews Score Predictor with Word Embeddings Implementation",
+    "description": "A machine learning project that predicts HackerNews post scores using title embeddings and feature engineering with custom Word2Vec implementation.",
+    "repoUrl": "https://github.com/jpe17/hackernews-predictor",
+    "imageUrl": "images/projects/word_embeddings.png",
+    "skills": [
+      { "name": "Python", "icon": "devicon-python-plain" },
+      { "name": "PyTorch", "icon": "devicon-pytorch-original" },
+      { "name": "Streamlit", "icon": "devicon-streamlit-plain" },
+      { "name": "FastAPI", "icon": "devicon-fastapi-plain" },
+      { "name": "Docker", "icon": "devicon-docker-plain" },
+      { "name": "PostgreSQL", "icon": "devicon-postgresql-plain" }
+    ]
+  },
+  {
+    "title": "Two Tower Hybrid Search Engine",
+    "description": "A hybrid search engine combining keyword (TF-IDF) and semantic search using a Two-Tower neural network. Users can tune the balance between keyword and semantic relevance.",
+    "repoUrl": "https://github.com/jpe17/TwoTowerMLRetrieval",
+    "imageUrl": "images/projects/google_with_tuning_params.png",
+    "skills": [
+      { "name": "Python", "icon": "devicon-python-plain" },
+      { "name": "PyTorch", "icon": "devicon-pytorch-original" },
+      { "name": "FastAPI", "icon": "devicon-fastapi-plain" },
+      { "name": "Docker", "icon": "devicon-docker-plain" }
+    ]
+  },
+  {
+    "title": "DeepNavierStokes: Solving the RANS equations for 1D channel flow using neural networks",
+    "description": "This project is a Master's thesis at Harvard University, focusing on solving the Reynolds-Averaged Navier-Stokes (RANS) equations using neural networks. It integrates deep learning techniques with traditional fluid dynamics to achieve ultra fast simulations with similar accuracy to traditional methods.",
+    "repoUrl": "https://github.com/jpe17/DeepNavierStokes",
+    "imageUrl": "images/projects/neurodiffeq.png",
+    "skills": [
+      { "name": "Python", "icon": "devicon-python-plain" },
+      { "name": "PyTorch", "icon": "devicon-pytorch-original" },
+      { "name": "Jupyter", "icon": "devicon-jupyter-plain" },
+      { "name": "Pandas", "icon": "devicon-pandas-plain" }
+    ]
+  }
+] 
