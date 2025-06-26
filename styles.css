@@ -141,8 +141,10 @@ h3,
 }
 
 .company-logo {
-    max-width: 50px;
-    margin-bottom: 1rem;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 0;
 }
 
 .skill-list .list-group-item {

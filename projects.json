@@ -13,18 +13,6 @@
     ]
   },
   {
-    "title": "Live Vision Encoder - Transformers (ViT)",
-    "description": "Buiot the encoder part of the Vision Transformer (ViT) from scratch in PyTorch for handwritten digit classification. The project features a real-time webcam demo that recognizes digits as you show them. This experiment highlights the classic machine learning challenge of adapting a model trained on clean data (like MNIST) to unprocessed, real-world images. The next logical step is to build a pre-processing pipeline that can automatically format the live camera feed to match the training data, dramatically improving real-world accuracy. A new project will come with the full transformers with multiple digits inference",
-    "repoUrl": "https://github.com/jpe17/MNISTransformers",
-    "imageUrl": "images/projects/numbers.png",
-    "skills": [
-      { "name": "Python", "icon": "devicon-python-plain" },
-      { "name": "Transformers", "icon": "devicon-pytorch-plain" },
-      { "name": "Jupyter", "icon": "devicon-jupyter-plain" },
-      { "name": "CV2", "icon": "devicon-cv2-plain" }
-    ]
-  },
-  {
     "title": "HackerNews Score Predictor with Word Embeddings Implementation",
     "description": "A machine learning project that predicts HackerNews post scores using title embeddings and feature engineering with custom Word2Vec implementation.",
     "repoUrl": "https://github.com/jpe17/hackernews-predictor",
@@ -36,6 +24,18 @@
       { "name": "FastAPI", "icon": "devicon-fastapi-plain" },
       { "name": "Docker", "icon": "devicon-docker-plain" },
       { "name": "PostgreSQL", "icon": "devicon-postgresql-plain" }
+    ]
+  },
+  {
+    "title": "Live Vision Encoder - Transformers (ViT)",
+    "description": "Built the encoder part of the Vision Transformer (ViT) from scratch in PyTorch for handwritten digit classification with a real-time webcam demo that recognizes digits as you show them.",
+    "repoUrl": "https://github.com/jpe17/MNISTransformers",
+    "imageUrl": "images/projects/numbers.png",
+    "skills": [
+      { "name": "Python", "icon": "devicon-python-plain" },
+      { "name": "Transformers", "icon": "devicon-pytorch-plain" },
+      { "name": "Jupyter", "icon": "devicon-jupyter-plain" },
+      { "name": "CV2", "icon": "devicon-cv2-plain" }
     ]
   },
   {
