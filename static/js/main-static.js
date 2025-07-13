@@ -56,6 +56,16 @@ function initializeNavigation() {
     
     let lastScrollY = window.scrollY;
     let isScrollingDown = false;
+    let navbarHovered = false;
+    
+    // Prevent hiding when hovering over navbar
+    navbar.addEventListener('mouseenter', () => {
+        navbarHovered = true;
+    });
+    
+    navbar.addEventListener('mouseleave', () => {
+        navbarHovered = false;
+    });
     
     // Auto-hide navbar on scroll
     function handleNavbarScroll() {
@@ -63,30 +73,33 @@ function initializeNavigation() {
         const scrollDifference = Math.abs(currentScrollY - lastScrollY);
         const isMobile = window.innerWidth <= 768;
         
-        // On mobile, hide navbar by default and only show when scrolling up significantly
+        // On mobile, be less aggressive with hiding
         if (isMobile) {
-            if (currentScrollY < 50) {
-                // Near top of page - hide navbar on mobile
-                navbar.classList.remove('show-mobile');
-            } else if (currentScrollY > lastScrollY) {
-                // Scrolling down - hide navbar
-                navbar.classList.remove('show-mobile');
-            } else if (scrollDifference > 20) {
-                // Scrolling up significantly - show navbar
-                navbar.classList.add('show-mobile');
+            // Only hide if scrolling down rapidly (more than 50px difference)
+            if (currentScrollY > lastScrollY && scrollDifference > 50 && currentScrollY > 200) {
+                // Scrolling down fast - hide after delay
+                setTimeout(() => {
+                    if (window.scrollY > currentScrollY && !navbarHovered) { // Don't hide if hovering
+                        navbar.classList.add('hide-mobile');
+                    }
+                }, 1000); // 1 second delay to allow clicking
+            } else if (currentScrollY < lastScrollY && scrollDifference > 20) {
+                // Scrolling up - show immediately
+                navbar.classList.remove('hide-mobile');
             }
         } else {
-            // Desktop behavior
-            // Only trigger if scroll difference is significant (prevents jitter)
-            if (scrollDifference > 5) {
-                if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                    // Scrolling down - hide navbar
-                    navbar.classList.add('hidden');
-                    isScrollingDown = true;
+            // Desktop behavior - less aggressive
+            if (scrollDifference > 10) {
+                if (currentScrollY > lastScrollY && currentScrollY > 150) {
+                    // Scrolling down - hide with delay
+                    setTimeout(() => {
+                        if (window.scrollY > currentScrollY && !navbar.querySelector('.nav-menu.active') && !navbarHovered) {
+                            navbar.classList.add('hidden');
+                        }
+                    }, 800);
                 } else {
-                    // Scrolling up - show navbar
+                    // Scrolling up - show immediately
                     navbar.classList.remove('hidden');
-                    isScrollingDown = false;
                 }
                 
                 // Add compact mode when scrolled
@@ -189,7 +202,8 @@ function initializeNavigation() {
     function initializeMobileNavbar() {
         const isMobile = window.innerWidth <= 768;
         if (isMobile) {
-            navbar.classList.remove('show-mobile');
+            // Start with navbar visible on mobile
+            navbar.classList.remove('hide-mobile');
         }
     }
     
@@ -214,8 +228,26 @@ function initializeTypingEffect() {
     let currentPhrase = 0;
     let currentChar = 0;
     let isDeleting = false;
+    let typingActive = true;
+    let typingTimeout;
+    
+    // Check if user is in hero section
+    function isInHeroSection() {
+        const heroSection = document.querySelector('.hero');
+        if (!heroSection) return true;
+        
+        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+        const scrollPosition = window.scrollY + window.innerHeight;
+        
+        return window.scrollY < heroBottom - 200; // Stop typing when near bottom of hero
+    }
     
     function type() {
+        if (!typingActive || !isInHeroSection()) {
+            // If not in hero section, keep the current text and stop typing
+            return;
+        }
+        
         const current = phrases[currentPhrase];
         
         if (isDeleting) {
@@ -237,8 +269,23 @@ function initializeTypingEffect() {
             typeSpeed = 500;
         }
         
-        setTimeout(type, typeSpeed);
+        typingTimeout = setTimeout(type, typeSpeed);
     }
+    
+    // Monitor scroll to pause/resume typing
+    window.addEventListener('scroll', () => {
+        if (isInHeroSection()) {
+            if (!typingActive) {
+                typingActive = true;
+                type(); // Resume typing
+            }
+        } else {
+            typingActive = false;
+            if (typingTimeout) {
+                clearTimeout(typingTimeout);
+            }
+        }
+    });
     
     type();
 }

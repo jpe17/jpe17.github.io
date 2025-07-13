@@ -281,11 +281,10 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     position: relative;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(0, 20, 40, 0.9) 100%);
     overflow: hidden;
-    padding: 2rem 0;
-    z-index: 1;
+    padding-top: 80px; /* Minimal space for navbar */
 }
 
 .hero::before {
@@ -355,13 +354,13 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--spacing-md);
+    z-index: 2;
+    position: relative;
 }
 
 .hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-xxl);
-    align-items: center;
+    text-align: left;
+    max-width: 800px;
 }
 
 .hero-title {
@@ -376,11 +375,12 @@ body {
     background-clip: text;
     animation: gradientShift 4s ease-in-out infinite;
     text-shadow: 0 0 30px rgba(0, 168, 255, 0.5);
-    /* Fixed height to prevent layout shifts during typing */
-    min-height: clamp(6rem, 12vw, 12rem);
+    /* Fixed height to prevent layout shifts */
+    height: 6rem;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     line-height: 1.2;
+    overflow: hidden;
 }
 
 @keyframes gradientShift {
@@ -611,7 +611,7 @@ body {
 }
 
 section {
-    padding: var(--spacing-xxl) 0;
+    padding: var(--spacing-xl) 0;
 }
 
 .section-title {
@@ -638,9 +638,6 @@ section {
 /* About Section */
 .about {
     background: var(--bg-secondary);
-    position: relative;
-    z-index: 2;
-    margin-top: 0;
 }
 
 .about-content {
@@ -1234,17 +1231,17 @@ section {
     }
 
     .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: var(--spacing-lg);
+        text-align: left;
         padding: 0 1rem;
+        max-width: 100%;
     }
 
     .hero-title {
         font-size: clamp(2rem, 10vw, 3.5rem);
         margin-bottom: 1rem;
-        /* Ensure fixed height on mobile to prevent layout shifts */
-        min-height: clamp(4rem, 15vw, 8rem);
+        /* Fixed height on mobile to prevent layout shifts */
+        height: 4rem;
+        align-items: flex-start;
     }
 
     .hero-description {
@@ -1277,17 +1274,18 @@ section {
 
     /* Auto-hide navbar on mobile */
     .navbar {
-        transform: translateY(-100%);
+        transform: translateY(0); /* Always show on mobile by default */
         transition: transform 0.3s ease;
     }
 
-    .navbar.show-mobile {
-        transform: translateY(0);
+    .navbar.hide-mobile {
+        transform: translateY(-100%);
     }
 
-    /* Ensure hero content isn't covered */
+    /* Ensure hero content isn't covered with more space */
     .hero {
-        padding-top: 20px;
+        padding-top: 140px; /* More space on mobile */
+        min-height: 100vh;
     }
 
     .about-content {
@@ -1342,7 +1340,16 @@ section {
     }
 
     section {
-        padding: 3rem 0;
+        padding: var(--spacing-lg) 0;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .about {
+        margin-top: var(--spacing-lg);
+    }
+
+    .hero-container {
+        margin-top: -40px; /* Better mobile centering */
     }
 }
 
