@@ -1252,6 +1252,21 @@ section {
         padding: 1rem;
     }
 
+    /* Mobile Education Stats */
+    .education-stat {
+        transform: scale(1.02);
+        min-width: 120px;
+    }
+
+    .education-stat:hover {
+        transform: scale(1.05);
+    }
+
+    .university-name {
+        font-size: 1.1rem !important;
+        letter-spacing: 0.5px;
+    }
+
     .about-content {
         grid-template-columns: 1fr;
         text-align: center;
