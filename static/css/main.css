@@ -415,9 +415,10 @@ body {
 }
 
 .hero-stats {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-xl);
+    margin: var(--spacing-xl) 0;
 }
 
 .stat-item {
@@ -1252,8 +1253,8 @@ section {
     }
 
     .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
         justify-content: center;
-        flex-wrap: wrap;
         gap: 1rem;
     }
 

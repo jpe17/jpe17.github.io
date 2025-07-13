@@ -61,28 +61,44 @@ function initializeNavigation() {
     function handleNavbarScroll() {
         const currentScrollY = window.scrollY;
         const scrollDifference = Math.abs(currentScrollY - lastScrollY);
+        const isMobile = window.innerWidth <= 768;
         
-        // Only trigger if scroll difference is significant (prevents jitter)
-        if (scrollDifference > 5) {
-            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // On mobile, hide navbar by default and only show when scrolling up significantly
+        if (isMobile) {
+            if (currentScrollY < 50) {
+                // Near top of page - hide navbar on mobile
+                navbar.classList.remove('show-mobile');
+            } else if (currentScrollY > lastScrollY) {
                 // Scrolling down - hide navbar
-                navbar.classList.add('hidden');
-                isScrollingDown = true;
-            } else {
-                // Scrolling up - show navbar
-                navbar.classList.remove('hidden');
-                isScrollingDown = false;
+                navbar.classList.remove('show-mobile');
+            } else if (scrollDifference > 20) {
+                // Scrolling up significantly - show navbar
+                navbar.classList.add('show-mobile');
             }
-            
-            // Add compact mode when scrolled
-            if (currentScrollY > 50) {
-                navbar.classList.add('compact');
-            } else {
-                navbar.classList.remove('compact');
+        } else {
+            // Desktop behavior
+            // Only trigger if scroll difference is significant (prevents jitter)
+            if (scrollDifference > 5) {
+                if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                    // Scrolling down - hide navbar
+                    navbar.classList.add('hidden');
+                    isScrollingDown = true;
+                } else {
+                    // Scrolling up - show navbar
+                    navbar.classList.remove('hidden');
+                    isScrollingDown = false;
+                }
+                
+                // Add compact mode when scrolled
+                if (currentScrollY > 50) {
+                    navbar.classList.add('compact');
+                } else {
+                    navbar.classList.remove('compact');
+                }
             }
-            
-            lastScrollY = currentScrollY;
         }
+        
+        lastScrollY = currentScrollY;
     }
     
     // Throttled scroll handler for performance
@@ -168,6 +184,18 @@ function initializeNavigation() {
     
     // Initial call to set correct active link
     updateActiveLink();
+    
+    // Initialize mobile navbar state
+    function initializeMobileNavbar() {
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) {
+            navbar.classList.remove('show-mobile');
+        }
+    }
+    
+    // Initialize on load and resize
+    initializeMobileNavbar();
+    window.addEventListener('resize', initializeMobileNavbar);
 }
 
 // Typing effect for hero section
