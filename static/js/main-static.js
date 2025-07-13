@@ -497,44 +497,74 @@ document.addEventListener('click', (e) => {
 
 // Advanced animations and interactions
 function initializeAdvancedAnimations() {
-    // Parallax scrolling for hero
+    let ticking = false;
+    
+    // Optimized parallax scrolling for hero only
     window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const hero = document.querySelector('.hero');
-        const particles = document.querySelector('.particles');
-        
-        if (hero && scrolled < window.innerHeight) {
-            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-        }
-        
-        if (particles && scrolled < window.innerHeight) {
-            particles.style.transform = `translateY(${scrolled * 0.3}px)`;
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                const scrolled = window.pageYOffset;
+                const heroHeight = window.innerHeight;
+                
+                // Only apply parallax when hero is visible and not scrolled past
+                if (scrolled < heroHeight) {
+                    const hero = document.querySelector('.hero');
+                    const particles = document.querySelector('.particles');
+                    
+                    // Reduced parallax intensity and contained within hero bounds
+                    if (hero) {
+                        hero.style.transform = `translateY(${scrolled * 0.2}px)`;
+                    }
+                    
+                    if (particles) {
+                        particles.style.transform = `translateY(${scrolled * 0.1}px)`;
+                    }
+                } else {
+                    // Reset transforms when scrolled past hero
+                    const hero = document.querySelector('.hero');
+                    const particles = document.querySelector('.particles');
+                    
+                    if (hero) hero.style.transform = '';
+                    if (particles) particles.style.transform = '';
+                }
+                
+                ticking = false;
+            });
+            ticking = true;
         }
     });
     
-    // Mouse movement effects
+    // Contained mouse movement effects (only for hero section)
     document.addEventListener('mousemove', (e) => {
-        const mouseX = e.clientX / window.innerWidth;
-        const mouseY = e.clientY / window.innerHeight;
+        const heroSection = document.querySelector('.hero');
+        if (!heroSection) return;
         
-        // Move neural network based on mouse
-        const neuralNetwork = document.querySelector('.neural-network');
-        if (neuralNetwork) {
-            neuralNetwork.style.transform = `
-                rotateY(${(mouseX - 0.5) * 10}deg) 
-                rotateX(${(mouseY - 0.5) * -10}deg)
-            `;
+        const heroRect = heroSection.getBoundingClientRect();
+        const isMouseInHero = e.clientY >= heroRect.top && e.clientY <= heroRect.bottom;
+        
+        if (isMouseInHero) {
+            const mouseX = (e.clientX - heroRect.left) / heroRect.width;
+            const mouseY = (e.clientY - heroRect.top) / heroRect.height;
+            
+            // Reduced neural network movement
+            const neuralNetwork = document.querySelector('.neural-network');
+            if (neuralNetwork) {
+                neuralNetwork.style.transform = `
+                    rotateY(${(mouseX - 0.5) * 5}deg) 
+                    rotateX(${(mouseY - 0.5) * -5}deg)
+                `;
+            }
+            
+            // Reduced particle movement
+            const particles = document.querySelectorAll('.particle');
+            particles.forEach((particle, index) => {
+                const factor = (index + 1) * 0.3;
+                particle.style.transform = `
+                    translateX(${(mouseX - 0.5) * factor}px) 
+                    translateY(${(mouseY - 0.5) * factor}px)
+                `;
+            });
         }
-        
-        // Move particles slightly
-        const particles = document.querySelectorAll('.particle');
-        particles.forEach((particle, index) => {
-            const factor = (index + 1) * 0.5;
-            particle.style.transform = `
-                translateX(${(mouseX - 0.5) * factor}px) 
-                translateY(${(mouseY - 0.5) * factor}px)
-            `;
-        });
     });
     
     // Add magnetic effect to buttons
@@ -567,12 +597,27 @@ function initializeAdvancedAnimations() {
     });
 }
 
-// Add scroll-based navbar transparency
+// Add scroll-based navbar transparency and cleanup
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (navbar) {
         const scrolled = window.pageYOffset;
         const rate = scrolled * -0.5;
         navbar.style.background = `rgba(10, 10, 10, ${Math.max(0.7, Math.min(0.95, 0.95 - scrolled * 0.001))})`;
+    }
+    
+    // Clean up hero effects when scrolled past
+    const heroHeight = window.innerHeight;
+    if (scrolled > heroHeight) {
+        const neuralNetwork = document.querySelector('.neural-network');
+        const particles = document.querySelectorAll('.particle');
+        
+        if (neuralNetwork) {
+            neuralNetwork.style.transform = '';
+        }
+        
+        particles.forEach(particle => {
+            particle.style.transform = '';
+        });
     }
 }); 

@@ -165,6 +165,7 @@ body {
     position: relative;
     overflow: hidden;
     padding: 2rem 0;
+    z-index: 1;
 }
 
 .hero::before {
@@ -464,6 +465,9 @@ section {
 /* About Section */
 .about {
     background: var(--bg-secondary);
+    position: relative;
+    z-index: 2;
+    margin-top: 0;
 }
 
 .about-content {
@@ -1142,12 +1146,24 @@ section {
 .neural-network,
 .particles {
     will-change: transform;
+    contain: layout style paint;
 }
 
 .project-card,
 .btn,
 .stat-item {
     will-change: transform, box-shadow;
+}
+
+/* Section isolation */
+section {
+    position: relative;
+    contain: layout style;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2;
 }
 
 /* Additional modern touches */
