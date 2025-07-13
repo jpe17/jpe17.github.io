@@ -469,6 +469,43 @@ body {
     letter-spacing: 0.5px;
 }
 
+/* University Education Stats */
+.education-stat {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(0, 168, 255, 0.1));
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 8px 32px rgba(255, 215, 0, 0.1);
+    transform: scale(1.05);
+    position: relative;
+}
+
+.education-stat::before {
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+}
+
+.education-stat:hover {
+    transform: scale(1.1);
+    border-color: rgba(255, 215, 0, 0.5);
+    box-shadow: 0 12px 40px rgba(255, 215, 0, 0.2);
+}
+
+.university-name {
+    font-size: 1.4rem !important;
+    font-weight: 800 !important;
+    background: linear-gradient(135deg, #FFD700, var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: var(--font-sans) !important;
+}
+
+.education-stat .stat-label {
+    color: rgba(255, 215, 0, 0.9);
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
 .hero-buttons {
     display: flex;
     gap: var(--spacing-md);
