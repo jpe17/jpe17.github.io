@@ -1,0 +1,582 @@
+// Static version of the main JavaScript file
+
+// DOM Content Loaded Event
+document.addEventListener('DOMContentLoaded', function() {
+    // Show loading screen
+    showLoadingScreen();
+    
+    // Initialize all components
+    initializeNavigation();
+    initializeTypingEffect();
+    initializeScrollAnimations();
+    loadStaticContent();
+    initializeContactForm();
+    initializeNeuralNetwork();
+    initializeAdvancedAnimations();
+    
+    // Hide loading screen after everything loads
+    setTimeout(hideLoadingScreen, 1500);
+});
+
+// Loading Screen Functions
+function showLoadingScreen() {
+    const loadingScreen = document.getElementById('loading-screen');
+    if (loadingScreen) {
+        loadingScreen.classList.remove('hidden');
+    }
+}
+
+function hideLoadingScreen() {
+    const loadingScreen = document.getElementById('loading-screen');
+    if (loadingScreen) {
+        loadingScreen.classList.add('hidden');
+        // Trigger enter animations
+        triggerEnterAnimations();
+    }
+}
+
+function triggerEnterAnimations() {
+    // Add staggered animations for elements
+    const elements = document.querySelectorAll('.fade-in');
+    elements.forEach((el, index) => {
+        setTimeout(() => {
+            el.style.animationDelay = `${index * 0.1}s`;
+            el.classList.add('animate-in');
+        }, index * 50);
+    });
+}
+
+// Navigation functionality
+function initializeNavigation() {
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    }
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+// Typing effect for hero section
+function initializeTypingEffect() {
+    const typingElement = document.querySelector('.typing-text');
+    if (!typingElement) return;
+    
+    const phrases = [
+        'AI & ML Engineer',
+        'Computer Vision Expert',
+        'Neural Network Architect',
+        'Deep Learning Specialist',
+        'Python Developer'
+    ];
+    
+    let currentPhrase = 0;
+    let currentChar = 0;
+    let isDeleting = false;
+    
+    function type() {
+        const current = phrases[currentPhrase];
+        
+        if (isDeleting) {
+            typingElement.textContent = current.substring(0, currentChar - 1);
+            currentChar--;
+        } else {
+            typingElement.textContent = current.substring(0, currentChar + 1);
+            currentChar++;
+        }
+        
+        let typeSpeed = isDeleting ? 50 : 100;
+        
+        if (!isDeleting && currentChar === current.length) {
+            typeSpeed = 2000; // Pause at end
+            isDeleting = true;
+        } else if (isDeleting && currentChar === 0) {
+            isDeleting = false;
+            currentPhrase = (currentPhrase + 1) % phrases.length;
+            typeSpeed = 500;
+        }
+        
+        setTimeout(type, typeSpeed);
+    }
+    
+    type();
+}
+
+// Scroll animations
+function initializeScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                
+                // Trigger skill bar animations
+                if (entry.target.classList.contains('skill-item')) {
+                    animateSkillBar(entry.target);
+                }
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all fade-in elements
+    document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// Animate skill progress bars
+function animateSkillBar(skillItem) {
+    const progressBar = skillItem.querySelector('.skill-progress');
+    if (progressBar) {
+        const level = progressBar.dataset.level;
+        setTimeout(() => {
+            progressBar.style.width = level + '%';
+        }, 300);
+    }
+}
+
+// Load static content from embedded data
+async function loadStaticContent() {
+    try {
+        // Load projects from JSON file
+        const response = await fetch('projects.json');
+        const projects = await response.json();
+        
+        // Use embedded data for other content
+        const { stats, skills, experiences } = window.STATIC_DATA;
+        
+        // Render content
+        renderStats(stats);
+        renderProjects(projects);
+        renderSkills(skills);
+        renderExperiences(experiences);
+        
+        // Add fade-in animations
+        addFadeInAnimations();
+        
+    } catch (error) {
+        console.error('Error loading static content:', error);
+        showErrorMessage('Failed to load content. Please refresh the page.');
+    }
+}
+
+// Render stats in hero section
+function renderStats(stats) {
+    const statsContainer = document.getElementById('hero-stats');
+    if (!statsContainer) return;
+    
+    const statsHTML = `
+        <div class="stat-item fade-in">
+            <span class="stat-number">${stats.total_projects}+</span>
+            <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat-item fade-in">
+            <span class="stat-number">${stats.years_experience}+</span>
+            <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-item fade-in">
+            <span class="stat-number">${stats.technologies_mastered}+</span>
+            <span class="stat-label">Technologies</span>
+        </div>
+        <div class="stat-item fade-in">
+            <span class="stat-number">${stats.companies_worked}+</span>
+            <span class="stat-label">Companies</span>
+        </div>
+    `;
+    
+    statsContainer.innerHTML = statsHTML;
+}
+
+// Render projects
+function renderProjects(projects) {
+    const projectsContainer = document.getElementById('projects-grid');
+    if (!projectsContainer) return;
+    
+    const projectsHTML = projects.map(project => `
+        <div class="project-card fade-in">
+            <img src="${project.imageUrl}" alt="${project.title}" class="project-image">
+            <div class="project-content">
+                <h3 class="project-title">${project.title}</h3>
+                <p class="project-description">${project.description}</p>
+                <div class="project-skills">
+                    ${project.skills.map(skill => `
+                        <span class="skill-tag">${skill.name}</span>
+                    `).join('')}
+                </div>
+                <a href="${project.repoUrl}" target="_blank" class="project-link">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+        </div>
+    `).join('');
+    
+    projectsContainer.innerHTML = projectsHTML;
+}
+
+// Render skills
+function renderSkills(skills) {
+    const skillsContainer = document.getElementById('skills-container');
+    if (!skillsContainer) return;
+    
+    const skillsHTML = Object.entries(skills).map(([category, skillList]) => `
+        <div class="skill-category fade-in">
+            <h3>${category}</h3>
+            <div class="skill-items">
+                ${skillList.map(skill => `
+                    <div class="skill-item fade-in">
+                        <div class="skill-icon">
+                            <i class="${skill.icon}"></i>
+                        </div>
+                        <div class="skill-info">
+                            <div class="skill-name">${skill.name}</div>
+                            <div class="skill-level">
+                                <div class="skill-progress" data-level="${skill.level}"></div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `).join('');
+    
+    skillsContainer.innerHTML = skillsHTML;
+}
+
+// Render experiences
+function renderExperiences(experiences) {
+    const experiencesContainer = document.getElementById('experience-timeline');
+    if (!experiencesContainer) return;
+    
+    const experiencesHTML = experiences.map(experience => `
+        <div class="timeline-item fade-in">
+            <div class="experience-card">
+                <div class="experience-header">
+                    <img src="${experience.logo}" alt="${experience.company}" class="company-logo">
+                    <div class="experience-info">
+                        <h3>${experience.position}</h3>
+                        <div class="experience-company">${experience.company}</div>
+                        <div class="experience-duration">${experience.duration}</div>
+                    </div>
+                </div>
+                <div class="experience-description">${experience.description}</div>
+                <div class="experience-skills">
+                    ${experience.skills.map(skill => `
+                        <span class="experience-skill">${skill}</span>
+                    `).join('')}
+                </div>
+            </div>
+        </div>
+    `).join('');
+    
+    experiencesContainer.innerHTML = experiencesHTML;
+}
+
+// Add fade-in animations to dynamically loaded content
+function addFadeInAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                
+                // Trigger skill bar animations
+                if (entry.target.classList.contains('skill-item')) {
+                    animateSkillBar(entry.target);
+                }
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all new fade-in elements
+    document.querySelectorAll('.fade-in:not(.visible)').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// Initialize contact form (static version - no backend)
+function initializeContactForm() {
+    const contactForm = document.getElementById('contact-form');
+    if (!contactForm) return;
+    
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(contactForm);
+        const data = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            message: formData.get('message')
+        };
+        
+        // Show loading state
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitButton.innerHTML;
+        submitButton.innerHTML = '<div class="loading"></div> Sending...';
+        submitButton.disabled = true;
+        
+        // Simulate sending (no real backend)
+        setTimeout(() => {
+            showSuccessMessage('Thank you for your message! I\'ll get back to you soon.');
+            contactForm.reset();
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
+        }, 1000);
+    });
+}
+
+// Initialize neural network animation
+function initializeNeuralNetwork() {
+    const neurons = document.querySelectorAll('.neuron');
+    if (neurons.length === 0) return;
+    
+    // Add random delays to neuron animations
+    neurons.forEach((neuron, index) => {
+        neuron.style.animationDelay = `${index * 0.3}s`;
+    });
+    
+    // Create connection lines between neurons
+    createNeuralConnections();
+}
+
+// Create visual connections between neurons
+function createNeuralConnections() {
+    const network = document.querySelector('.neural-network');
+    if (!network) return;
+    
+    const layers = document.querySelectorAll('.network-layer');
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.style.position = 'absolute';
+    svg.style.top = '0';
+    svg.style.left = '0';
+    svg.style.width = '100%';
+    svg.style.height = '100%';
+    svg.style.pointerEvents = 'none';
+    svg.style.zIndex = '0';
+    
+    network.appendChild(svg);
+    
+    // Create connections between layers
+    for (let i = 0; i < layers.length - 1; i++) {
+        const currentLayer = layers[i];
+        const nextLayer = layers[i + 1];
+        
+        const currentNeurons = currentLayer.querySelectorAll('.neuron');
+        const nextNeurons = nextLayer.querySelectorAll('.neuron');
+        
+        currentNeurons.forEach(neuron1 => {
+            nextNeurons.forEach(neuron2 => {
+                createConnection(svg, neuron1, neuron2);
+            });
+        });
+    }
+}
+
+// Create individual connection line
+function createConnection(svg, neuron1, neuron2) {
+    const rect1 = neuron1.getBoundingClientRect();
+    const rect2 = neuron2.getBoundingClientRect();
+    const networkRect = svg.parentElement.getBoundingClientRect();
+    
+    const x1 = rect1.left - networkRect.left + rect1.width / 2;
+    const y1 = rect1.top - networkRect.top + rect1.height / 2;
+    const x2 = rect2.left - networkRect.left + rect2.width / 2;
+    const y2 = rect2.top - networkRect.top + rect2.height / 2;
+    
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', x1);
+    line.setAttribute('y1', y1);
+    line.setAttribute('x2', x2);
+    line.setAttribute('y2', y2);
+    line.setAttribute('stroke', 'rgba(0, 168, 255, 0.3)');
+    line.setAttribute('stroke-width', '1');
+    
+    svg.appendChild(line);
+}
+
+// Utility functions
+function showSuccessMessage(message) {
+    showToast(message, 'success');
+}
+
+function showErrorMessage(message) {
+    showToast(message, 'error');
+}
+
+function showToast(message, type) {
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.textContent = message;
+    
+    // Add toast styles
+    Object.assign(toast.style, {
+        position: 'fixed',
+        top: '20px',
+        right: '20px',
+        padding: '1rem 1.5rem',
+        background: type === 'success' ? '#00a8ff' : '#ff6b6b',
+        color: '#0a0a0a',
+        borderRadius: '8px',
+        fontWeight: '600',
+        zIndex: '10000',
+        animation: 'slideIn 0.3s ease-out'
+    });
+    
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.style.animation = 'slideOut 0.3s ease-in';
+        setTimeout(() => {
+            document.body.removeChild(toast);
+        }, 300);
+    }, 3000);
+}
+
+// Add CSS animations for toast
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slideOut {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+    }
+`;
+document.head.appendChild(style);
+
+// Handle window resize for neural network
+window.addEventListener('resize', () => {
+    const svg = document.querySelector('.neural-network svg');
+    if (svg) {
+        svg.remove();
+        setTimeout(createNeuralConnections, 100);
+    }
+});
+
+// Smooth scrolling for all internal links
+document.addEventListener('click', (e) => {
+    if (e.target.matches('a[href^="#"]')) {
+        e.preventDefault();
+        const target = document.querySelector(e.target.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }
+});
+
+// Advanced animations and interactions
+function initializeAdvancedAnimations() {
+    // Parallax scrolling for hero
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('.hero');
+        const particles = document.querySelector('.particles');
+        
+        if (hero && scrolled < window.innerHeight) {
+            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        }
+        
+        if (particles && scrolled < window.innerHeight) {
+            particles.style.transform = `translateY(${scrolled * 0.3}px)`;
+        }
+    });
+    
+    // Mouse movement effects
+    document.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX / window.innerWidth;
+        const mouseY = e.clientY / window.innerHeight;
+        
+        // Move neural network based on mouse
+        const neuralNetwork = document.querySelector('.neural-network');
+        if (neuralNetwork) {
+            neuralNetwork.style.transform = `
+                rotateY(${(mouseX - 0.5) * 10}deg) 
+                rotateX(${(mouseY - 0.5) * -10}deg)
+            `;
+        }
+        
+        // Move particles slightly
+        const particles = document.querySelectorAll('.particle');
+        particles.forEach((particle, index) => {
+            const factor = (index + 1) * 0.5;
+            particle.style.transform = `
+                translateX(${(mouseX - 0.5) * factor}px) 
+                translateY(${(mouseY - 0.5) * factor}px)
+            `;
+        });
+    });
+    
+    // Add magnetic effect to buttons
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05) translateY(-2px)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) translateY(0)';
+        });
+    });
+    
+    // Enhanced hover effects for project cards
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            // Add glow effect
+            this.style.boxShadow = `
+                0 25px 50px rgba(0, 168, 255, 0.4),
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1)
+            `;
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.boxShadow = '';
+        });
+    });
+}
+
+// Add scroll-based navbar transparency
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+        navbar.style.background = `rgba(10, 10, 10, ${Math.max(0.7, Math.min(0.95, 0.95 - scrolled * 0.001))})`;
+    }
+}); 

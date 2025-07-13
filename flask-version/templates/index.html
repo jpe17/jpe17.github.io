@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>João Esteves - ML Engineer</title>
     
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -18,22 +18,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     
     <!-- Meta Tags -->
     <meta property="og:title" content="João Esteves - ML Engineer">
     <meta property="og:description" content="Lead ML Engineer specializing in AI/ML solutions, computer vision, and neural networks">
-    <meta property="og:image" content="static/images/projects/website.png">
+    <meta property="og:image" content="{{ url_for('static', filename='images/projects/website.png') }}">
     <meta property="og:url" content="https://jpe17.github.io/">
     <meta property="og:type" content="website">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loading-screen">
-        <div class="loader"></div>
-        <div class="loading-text">Loading AI Portfolio...</div>
-    </div>
-
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -59,20 +53,6 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
-        <!-- Particle Animation -->
-        <div class="particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
-        
         <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-text">
@@ -81,9 +61,8 @@
                         <span class="cursor">|</span>
                     </h1>
                     <p class="hero-description">
-                        Building next-generation AI systems with <span class="highlight">PyTorch</span>, 
-                        <span class="highlight">Transformers</span>, and <span class="highlight">Computer Vision</span>.
-                        From research to production, I deliver scalable ML solutions that drive business impact.
+                        Transforming ideas into intelligent solutions with <span class="highlight">deep learning</span>, 
+                        <span class="highlight">computer vision</span>, and <span class="highlight">neural networks</span>
                     </p>
                     <div class="hero-stats" id="hero-stats">
                         <!-- Stats will be loaded dynamically -->
@@ -127,15 +106,15 @@
             <div class="about-content">
                 <div class="about-text">
                     <p class="about-description">
-                        <strong>ML Engineer & AI Researcher</strong> with expertise in deep learning, computer vision, and production ML systems. 
-                        Aerospace Engineering background from <strong>Imperial College London</strong> + research experience at 
-                        <strong>Harvard University</strong> in Applied Computational Science.
+                        With a background in <strong>aerospace engineering</strong> and advanced studies at 
+                        <strong>Harvard University</strong>, I've found my passion at the intersection of 
+                        artificial intelligence and real-world impact.
                     </p>
                     <p class="about-description">
-                        Currently <strong>Lead Solution Engineer</strong> at OpenSC, building AI-powered supply chain transparency solutions. 
-                        Proven track record of taking ML models from research to production, with expertise in 
-                        <strong>PyTorch</strong>, <strong>Transformers</strong>, <strong>Computer Vision</strong>, and 
-                        <strong>MLOps</strong>. Experience scaling ML systems across 5,000+ cities globally.
+                        Currently serving as a <strong>Lead Solution Engineer</strong> at OpenSC, I specialize in 
+                        building transparent, ethical supply chains using cutting-edge ML techniques. My work spans 
+                        from <strong>computer vision</strong> and <strong>transformer architectures</strong> to 
+                        <strong>neural ODEs</strong> and <strong>real-time inference systems</strong>.
                     </p>
                     <div class="education-cards">
                         <div class="education-card">
@@ -151,7 +130,7 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="static/images/photo.jpg" alt="João Esteves" class="profile-image">
+                    <img src="{{ url_for('static', filename='images/photo.jpg') }}" alt="João Esteves" class="profile-image">
                     <div class="image-overlay">
                         <div class="social-links">
                             <a href="https://linkedin.com/in/joaoesteves7" class="social-link">
@@ -243,98 +222,11 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 João Esteves. Built with Modern Web Technologies.</p>
+            <p>&copy; 2025 João Esteves. Built with Flask & Modern Web Technologies.</p>
         </div>
     </footer>
 
-    <!-- Embedded Data -->
-    <script>
-        // Static data embedded in the page
-        window.STATIC_DATA = {
-            stats: {
-                "total_projects": 8,
-                "years_experience": 7,
-                "technologies_mastered": 16,
-                "companies_worked": 6
-            },
-            experiences: [
-                {
-                    "company": "OpenSC",
-                    "position": "Lead Solution Engineer",
-                    "description": "Building transparent, ethical supply chains that drive sustainability and uphold human rights.",
-                    "duration": "Nov 2024 - Present",
-                    "logo": "static/images/logos/opensc.png",
-                    "skills": ["Python", "Machine Learning", "Data Engineering", "Sustainability Tech"]
-                },
-                {
-                    "company": "Optibus",
-                    "position": "Lead Solutions Architect",
-                    "description": "Developed CO2 reduction solutions for large public transport operators deployed in 5,000+ cities.",
-                    "duration": "Nov 2023 - Oct 2024",
-                    "logo": "static/images/logos/optibus.webp",
-                    "skills": ["AI/ML", "Cloud Architecture", "Optimization", "Sustainability"]
-                },
-                {
-                    "company": "Optibus",
-                    "position": "Lead Solutions Engineer",
-                    "description": "Mentored engineering teams and implemented security protocols for EMEA SaaS infrastructure.",
-                    "duration": "Jul 2021 - Oct 2023",
-                    "logo": "static/images/logos/optibus.webp",
-                    "skills": ["DevOps", "Security", "Team Leadership", "SaaS"]
-                },
-                {
-                    "company": "KALAB",
-                    "position": "Chief Technology Officer",
-                    "description": "Directed development of music platform achieving 400+ bookings and 1000+ users.",
-                    "duration": "Oct 2019 - Oct 2020",
-                    "logo": "static/images/logos/kalab.png",
-                    "skills": ["Full Stack", "Platform Development", "User Growth", "Music Tech"]
-                },
-                {
-                    "company": "From Denim To Green",
-                    "position": "Co-founder",
-                    "description": "Created sustainable textile activism platform and Greenvolution Talks series.",
-                    "duration": "Oct 2018 - Jul 2020",
-                    "logo": "static/images/logos/fromdenimtogreen.png",
-                    "skills": ["Sustainability", "Community Building", "Content Creation", "Social Impact"]
-                },
-                {
-                    "company": "CEiiA",
-                    "position": "Product Development Intern",
-                    "description": "Managed development of nanosatellite prototype for ocean surveillance.",
-                    "duration": "Jul 2018 - Aug 2019",
-                    "logo": "static/images/logos/ceiia.jpg",
-                    "skills": ["Aerospace Engineering", "Product Development", "Satellite Technology", "Ocean Monitoring"]
-                }
-            ],
-            skills: {
-                "Programming Languages": [
-                    {"name": "Python", "icon": "devicon-python-plain", "level": 95},
-                    {"name": "SQL", "icon": "devicon-azuresqldatabase-plain", "level": 90},
-                    {"name": "HTML/CSS", "icon": "devicon-html5-plain", "level": 85},
-                    {"name": "JavaScript", "icon": "devicon-javascript-plain", "level": 75},
-                    {"name": "Matlab", "icon": "devicon-matlab-plain", "level": 80}
-                ],
-                "ML/AI Frameworks": [
-                    {"name": "PyTorch", "icon": "devicon-pytorch-original", "level": 90},
-                    {"name": "TensorFlow", "icon": "devicon-tensorflow-original", "level": 85},
-                    {"name": "Transformers", "icon": "devicon-python-plain", "level": 90},
-                    {"name": "OpenAI", "icon": "devicon-openai-plain", "level": 80},
-                    {"name": "Whisper", "icon": "devicon-python-plain", "level": 85}
-                ],
-                "Tools & Infrastructure": [
-                    {"name": "Docker", "icon": "devicon-docker-plain", "level": 90},
-                    {"name": "Git", "icon": "devicon-git-plain", "level": 95},
-                    {"name": "AWS", "icon": "devicon-amazonwebservices-plain-wordmark", "level": 85},
-                    {"name": "PostgreSQL", "icon": "devicon-postgresql-plain", "level": 85},
-                    {"name": "Flask", "icon": "devicon-flask-original", "level": 90},
-                    {"name": "FastAPI", "icon": "devicon-fastapi-plain", "level": 85}
-                ]
-            }
-        };
-    </script>
-
     <!-- Scripts -->
-    <script src="static/js/main-static.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html> 
