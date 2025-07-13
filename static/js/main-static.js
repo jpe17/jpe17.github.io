@@ -85,10 +85,10 @@ function initializeTypingEffect() {
     if (!typingElement) return;
     
     const phrases = [
-        'AI & ML Engineer',
-        'Computer Vision Expert',
-        'Neural Network Architect',
-        'Deep Learning Specialist',
+        'ML Engineer',
+        'Technical Lead',
+        'Co-Founder & CTO',
+        'Solution Architect',
         'Python Developer'
     ];
     
