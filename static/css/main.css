@@ -285,6 +285,7 @@ body {
     background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(0, 20, 40, 0.9) 100%);
     overflow: hidden;
     padding-top: 80px; /* Minimal space for navbar */
+    padding-bottom: 15rem; /* Much more space to completely prevent button jumping */
 }
 
 .hero::before {
@@ -299,6 +300,7 @@ body {
         radial-gradient(circle at 80% 20%, rgba(100, 181, 246, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 40% 40%, rgba(0, 168, 255, 0.05) 0%, transparent 60%);
     pointer-events: none;
+    z-index: -1; /* Behind everything */
 }
 
 /* Particle Animation Background */
@@ -309,7 +311,7 @@ body {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 1;
+    z-index: 0; /* Behind content */
 }
 
 .particle {
@@ -354,7 +356,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--spacing-md);
-    z-index: 2;
     position: relative;
 }
 
@@ -521,6 +522,7 @@ body {
 .hero-buttons {
     display: flex;
     gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
 }
 
 .btn {
@@ -530,7 +532,7 @@ body {
     font-weight: 600;
     text-decoration: none;
     cursor: pointer;
-    transition: var(--transition);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transitions only */
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-xs);
@@ -1291,6 +1293,7 @@ section {
     .hero {
         padding-top: 140px; /* More space on mobile */
         min-height: 100vh;
+        padding-bottom: 18rem; /* Massive space on mobile to completely prevent jumping */
     }
 
     .about-content {
@@ -1320,8 +1323,8 @@ section {
 
     .hero-buttons {
         flex-direction: column;
-        align-items: center;
         gap: 1rem;
+        margin-top: 2rem;
     }
 
     .btn {

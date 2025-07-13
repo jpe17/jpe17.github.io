@@ -678,23 +678,16 @@ function initializeAdvancedAnimations() {
                 
                 // Only apply parallax when hero is visible and not scrolled past
                 if (scrolled < heroHeight) {
-                    const hero = document.querySelector('.hero');
                     const particles = document.querySelector('.particles');
                     
-                    // Reduced parallax intensity and contained within hero bounds
-                    if (hero) {
-                        hero.style.transform = `translateY(${scrolled * 0.2}px)`;
-                    }
-                    
+                    // Apply parallax only to background elements, not hero content
                     if (particles) {
                         particles.style.transform = `translateY(${scrolled * 0.1}px)`;
                     }
                 } else {
                     // Reset transforms when scrolled past hero
-                    const hero = document.querySelector('.hero');
                     const particles = document.querySelector('.particles');
                     
-                    if (hero) hero.style.transform = '';
                     if (particles) particles.style.transform = '';
                 }
                 
