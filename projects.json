@@ -31,20 +31,6 @@
     ]
   },
   {
-    "title": "Transformer-Based Music Genre Classification with Hybrid Intelligence",
-    "description": "Sophisticated music genre classification system that adapts OpenAI's Whisper transformer architecture for music understanding. Combines deep learning with traditional music theory heuristics to provide comprehensive audio analysis including genre classification, mood detection, key identification, and quality assessment through a real-time web interface.",
-    "repoUrl": "https://github.com/jpe17/MusicGenreClassifierTransformers",
-    "imageUrl": "images/projects/music_genre_transformer.png",
-    "skills": [
-      { "name": "PyTorch", "icon": "devicon-pytorch-original" },
-      { "name": "Transformers", "icon": "devicon-python-plain" },
-      { "name": "Whisper", "icon": "devicon-openai-plain" },
-      { "name": "Flask", "icon": "devicon-flask-original" },
-      { "name": "Audio Processing", "icon": "devicon-python-plain" },
-      { "name": "Machine Learning", "icon": "devicon-tensorflow-original" }
-    ]
-  },
-  {
     "title": "DemucsML: Advanced Voice-to-Instrumental Diffusion Pipeline",
     "description": "Production-ready ML engineering pipeline that combines Facebook's DEMUCS with experimental latent diffusion models for voice-to-instrumental generation. Features enterprise-grade source separation, VAE latent space encoding, and conditional diffusion models with a modern Flask web interface for real-time audio processing and generation.",
     "repoUrl": "https://github.com/jpe17/DemucsML",
@@ -58,6 +44,20 @@
       { "name": "Audio Processing", "icon": "devicon-python-plain" },
       { "name": "ML Engineering", "icon": "devicon-python-plain" },
       { "name": "Librosa", "icon": "devicon-python-plain" }
+    ]
+  },
+  {
+    "title": "Transformer-Based Music Genre Classification with Hybrid Intelligence",
+    "description": "Sophisticated music genre classification system that adapts OpenAI's Whisper transformer architecture for music understanding. Combines deep learning with traditional music theory heuristics to provide comprehensive audio analysis including genre classification, mood detection, key identification, and quality assessment through a real-time web interface.",
+    "repoUrl": "https://github.com/jpe17/MusicGenreClassifierTransformers",
+    "imageUrl": "images/projects/music_genre_transformer.png",
+    "skills": [
+      { "name": "PyTorch", "icon": "devicon-pytorch-original" },
+      { "name": "Transformers", "icon": "devicon-python-plain" },
+      { "name": "Whisper", "icon": "devicon-openai-plain" },
+      { "name": "Flask", "icon": "devicon-flask-original" },
+      { "name": "Audio Processing", "icon": "devicon-python-plain" },
+      { "name": "Machine Learning", "icon": "devicon-tensorflow-original" }
     ]
   },
   {
