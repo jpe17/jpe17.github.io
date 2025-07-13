@@ -469,41 +469,51 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* University Education Stats */
-.education-stat {
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(0, 168, 255, 0.1));
-    border: 2px solid rgba(255, 215, 0, 0.3);
-    box-shadow: 0 8px 32px rgba(255, 215, 0, 0.1);
-    transform: scale(1.05);
-    position: relative;
+/* Subtle University Education Badges */
+.education-badges {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    grid-column: 1 / -1;
 }
 
-.education-stat::before {
-    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
-}
-
-.education-stat:hover {
-    transform: scale(1.1);
-    border-color: rgba(255, 215, 0, 0.5);
-    box-shadow: 0 12px 40px rgba(255, 215, 0, 0.2);
-}
-
-.university-name {
-    font-size: 1.4rem !important;
-    font-weight: 800 !important;
-    background: linear-gradient(135deg, #FFD700, var(--primary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-family: var(--font-sans) !important;
-}
-
-.education-stat .stat-label {
-    color: rgba(255, 215, 0, 0.9);
+.education-badge {
+    padding: 0.5rem 1.2rem;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(0, 168, 255, 0.05));
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 20px;
+    font-size: 0.85rem;
     font-weight: 600;
-    font-size: 0.8rem;
+    color: #FFD700;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.education-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.education-badge:hover {
+    border-color: rgba(255, 215, 0, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.1);
+}
+
+.education-badge:hover::before {
+    left: 100%;
 }
 
 .hero-buttons {
@@ -1252,19 +1262,31 @@ section {
         padding: 1rem;
     }
 
-    /* Mobile Education Stats */
-    .education-stat {
-        transform: scale(1.02);
-        min-width: 120px;
+    /* Mobile Education Badges */
+    .education-badges {
+        margin-top: 1rem;
+        gap: 0.75rem;
     }
 
-    .education-stat:hover {
-        transform: scale(1.05);
+    .education-badge {
+        padding: 0.4rem 1rem;
+        font-size: 0.75rem;
+        letter-spacing: 0.3px;
     }
 
-    .university-name {
-        font-size: 1.1rem !important;
-        letter-spacing: 0.5px;
+    /* Auto-hide navbar on mobile */
+    .navbar {
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .navbar.show-mobile {
+        transform: translateY(0);
+    }
+
+    /* Ensure hero content isn't covered */
+    .hero {
+        padding-top: 20px;
     }
 
     .about-content {

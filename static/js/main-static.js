@@ -279,14 +279,6 @@ function renderStats(stats) {
     if (!statsContainer) return;
     
     const statsHTML = `
-        <div class="stat-item fade-in education-stat">
-            <span class="stat-number university-name">${stats.harvard_education}</span>
-            <span class="stat-label">University</span>
-        </div>
-        <div class="stat-item fade-in education-stat">
-            <span class="stat-number university-name">${stats.imperial_education}</span>
-            <span class="stat-label">College London</span>
-        </div>
         <div class="stat-item fade-in">
             <span class="stat-number">${stats.total_projects}+</span>
             <span class="stat-label">Projects</span>
@@ -302,6 +294,10 @@ function renderStats(stats) {
         <div class="stat-item fade-in">
             <span class="stat-number">${stats.companies_worked}+</span>
             <span class="stat-label">Companies</span>
+        </div>
+        <div class="education-badges">
+            <div class="education-badge">${stats.harvard_education}</div>
+            <div class="education-badge">${stats.imperial_education}</div>
         </div>
     `;
     
