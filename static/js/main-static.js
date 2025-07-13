@@ -85,8 +85,8 @@ function initializeTypingEffect() {
     if (!typingElement) return;
     
     const phrases = [
-        'ML Engineer',
-        'Technical Lead',
+        'Machine Learning Researcher',
+        'Engineering Lead',
         'Co-Founder & CTO',
         'Solution Architect',
         'Python Developer'
