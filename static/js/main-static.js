@@ -164,12 +164,8 @@ function animateSkillBar(skillItem) {
 // Load static content from embedded data
 async function loadStaticContent() {
     try {
-        // Load projects from JSON file
-        const response = await fetch('projects.json');
-        const projects = await response.json();
-        
-        // Use embedded data for other content
-        const { stats, skills, experiences } = window.STATIC_DATA;
+        // Use all embedded data
+        const { stats, projects, skills, experiences } = window.STATIC_DATA;
         
         // Render content
         renderStats(stats);
