@@ -46,23 +46,107 @@ function triggerEnterAnimations() {
     });
 }
 
-// Navigation functionality
+// Modern Navigation functionality
 function initializeNavigation() {
+    const navbar = document.getElementById('navbar');
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
+    const navOverlay = document.getElementById('nav-overlay');
+    const navLinks = document.querySelectorAll('.nav-link');
     
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
+    let lastScrollY = window.scrollY;
+    let isScrollingDown = false;
+    
+    // Auto-hide navbar on scroll
+    function handleNavbarScroll() {
+        const currentScrollY = window.scrollY;
+        const scrollDifference = Math.abs(currentScrollY - lastScrollY);
+        
+        // Only trigger if scroll difference is significant (prevents jitter)
+        if (scrollDifference > 5) {
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                // Scrolling down - hide navbar
+                navbar.classList.add('hidden');
+                isScrollingDown = true;
+            } else {
+                // Scrolling up - show navbar
+                navbar.classList.remove('hidden');
+                isScrollingDown = false;
+            }
+            
+            // Add compact mode when scrolled
+            if (currentScrollY > 50) {
+                navbar.classList.add('compact');
+            } else {
+                navbar.classList.remove('compact');
+            }
+            
+            lastScrollY = currentScrollY;
+        }
+    }
+    
+    // Throttled scroll handler for performance
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
+        }
+        scrollTimeout = setTimeout(handleNavbarScroll, 10);
+    });
+    
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+        const isActive = navMenu.classList.contains('active');
+        
+        navMenu.classList.toggle('active');
+        navToggle.classList.toggle('active');
+        navOverlay.classList.toggle('active');
+        
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = isActive ? 'auto' : 'hidden';
+    }
+    
+    // Close mobile menu
+    function closeMobileMenu() {
+        navMenu.classList.remove('active');
+        navToggle.classList.remove('active');
+        navOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+    
+    // Event listeners
+    if (navToggle) {
+        navToggle.addEventListener('click', toggleMobileMenu);
+    }
+    
+    if (navOverlay) {
+        navOverlay.addEventListener('click', closeMobileMenu);
     }
     
     // Close mobile menu when clicking on a link
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-        });
+    navLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
     });
+    
+    // Smooth scrolling and active link highlighting
+    function updateActiveLink() {
+        const sections = document.querySelectorAll('section[id]');
+        const scrollPosition = window.scrollY + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                navLinks.forEach(link => link.classList.remove('active'));
+                const activeLink = document.querySelector(`[href="#${sectionId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    }
     
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -70,13 +154,20 @@ function initializeNavigation() {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                const offsetTop = target.offsetTop - 80; // Account for navbar height
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
                 });
             }
         });
     });
+    
+    // Update active link on scroll
+    window.addEventListener('scroll', updateActiveLink);
+    
+    // Initial call to set correct active link
+    updateActiveLink();
 }
 
 // Typing effect for hero section
@@ -188,6 +279,14 @@ function renderStats(stats) {
     if (!statsContainer) return;
     
     const statsHTML = `
+        <div class="stat-item fade-in education-stat">
+            <span class="stat-number university-name">${stats.harvard_education}</span>
+            <span class="stat-label">University</span>
+        </div>
+        <div class="stat-item fade-in education-stat">
+            <span class="stat-number university-name">${stats.imperial_education}</span>
+            <span class="stat-label">College London</span>
+        </div>
         <div class="stat-item fade-in">
             <span class="stat-number">${stats.total_projects}+</span>
             <span class="stat-label">Projects</span>

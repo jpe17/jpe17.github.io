@@ -34,15 +34,18 @@
         <div class="loading-text">Loading AI Portfolio...</div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
+    <!-- Modern Navigation -->
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <span class="logo-text">João<span class="accent">Esteves</span></span>
-                <span class="logo-subtitle">AI & ML Engineering</span>
+                <div class="logo-icon">JE</div>
+                <div class="logo-text-container">
+                    <span class="logo-text">João<span class="accent">Esteves</span></span>
+                    <span class="logo-subtitle">AI & ML Engineering</span>
+                </div>
             </div>
             <div class="nav-menu" id="nav-menu">
-                <a href="#hero" class="nav-link">Home</a>
+                <a href="#hero" class="nav-link active">Home</a>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#projects" class="nav-link">Projects</a>
                 <a href="#skills" class="nav-link">Skills</a>
@@ -50,12 +53,13 @@
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
             <div class="nav-toggle" id="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <div class="hamburger"></div>
             </div>
         </div>
     </nav>
+    
+    <!-- Mobile Navigation Overlay -->
+    <div class="nav-overlay" id="nav-overlay"></div>
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
@@ -253,9 +257,11 @@
         window.STATIC_DATA = {
             stats: {
                 "total_projects": 8,
-                "years_experience": 7,
+                "years_experience": 5,
                 "technologies_mastered": 16,
-                "companies_worked": 6
+                "companies_worked": 3,
+                "harvard_education": "Harvard",
+                "imperial_education": "Imperial"
             },
             projects: [
                 {
