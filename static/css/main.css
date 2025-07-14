@@ -1448,6 +1448,11 @@ section {
     .hero-container {
         margin-top: 0;
     }
+
+    .education-details {
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+    }
 }
 
 /* Loading Animation */
