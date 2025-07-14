@@ -370,10 +370,6 @@ function renderStats(stats) {
             <span class="stat-number">${stats.companies_worked}+</span>
             <span class="stat-label">Companies</span>
         </div>
-        <div class="education-badges">
-            <div class="education-badge">${stats.harvard_education}</div>
-            <div class="education-badge">${stats.imperial_education}</div>
-        </div>
     `;
     
     statsContainer.innerHTML = statsHTML;
