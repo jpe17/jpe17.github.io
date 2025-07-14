@@ -485,18 +485,19 @@ function addFadeInAnimations() {
     });
 }
 
-// Initialize contact form (static version - sends real email)
+// Initialize contact form (static version - sends real email via Formspree)
 function initializeContactForm() {
     const contactForm = document.getElementById('contact-form');
     if (!contactForm) return;
+    
+    // Set up form action to use Formspree
+    contactForm.action = 'https://formspree.io/f/xnnzaglv'; // You'll need to replace this
+    contactForm.method = 'POST';
     
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         const formData = new FormData(contactForm);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
         
         // Show loading state
         const submitButton = contactForm.querySelector('button[type="submit"]');
@@ -505,26 +506,25 @@ function initializeContactForm() {
         submitButton.disabled = true;
         
         try {
-            // Create mailto link with form data
-            const subject = encodeURIComponent(`Contact Form Message from ${name}`);
-            const body = encodeURIComponent(`
-Name: ${name}
-Email: ${email}
-Message: ${message}
-            `.trim());
+            // Send email using Formspree
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
             
-            const mailtoLink = `mailto:joaopaesteves99@gmail.com?subject=${subject}&body=${body}`;
-            
-            // Open email client
-            window.location.href = mailtoLink;
-            
-            // Show success message
-            showSuccessMessage('Email client opened! Please send the email to complete your message.');
-            contactForm.reset();
+            if (response.ok) {
+                showSuccessMessage('Message sent successfully! I\'ll get back to you soon.');
+                contactForm.reset();
+            } else {
+                throw new Error('Failed to send email');
+            }
             
         } catch (error) {
-            console.error('Error opening email client:', error);
-            showErrorMessage('Failed to open email client. Please email me directly at joaopaesteves99@gmail.com');
+            console.error('Error sending email:', error);
+            showErrorMessage('Failed to send message. Please email me directly at joaopaesteves99@gmail.com');
         } finally {
             submitButton.innerHTML = originalText;
             submitButton.disabled = false;
