@@ -485,7 +485,7 @@ function addFadeInAnimations() {
     });
 }
 
-// Initialize contact form (static version - no backend)
+// Initialize contact form (static version - sends real email)
 function initializeContactForm() {
     const contactForm = document.getElementById('contact-form');
     if (!contactForm) return;
@@ -494,11 +494,9 @@ function initializeContactForm() {
         e.preventDefault();
         
         const formData = new FormData(contactForm);
-        const data = {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            message: formData.get('message')
-        };
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const message = formData.get('message');
         
         // Show loading state
         const submitButton = contactForm.querySelector('button[type="submit"]');
@@ -506,13 +504,31 @@ function initializeContactForm() {
         submitButton.innerHTML = '<div class="loading"></div> Sending...';
         submitButton.disabled = true;
         
-        // Simulate sending (no real backend)
-        setTimeout(() => {
-            showSuccessMessage('Thank you for your message! I\'ll get back to you soon.');
+        try {
+            // Create mailto link with form data
+            const subject = encodeURIComponent(`Contact Form Message from ${name}`);
+            const body = encodeURIComponent(`
+Name: ${name}
+Email: ${email}
+Message: ${message}
+            `.trim());
+            
+            const mailtoLink = `mailto:joaopaesteves99@gmail.com?subject=${subject}&body=${body}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            showSuccessMessage('Email client opened! Please send the email to complete your message.');
             contactForm.reset();
+            
+        } catch (error) {
+            console.error('Error opening email client:', error);
+            showErrorMessage('Failed to open email client. Please email me directly at joaopaesteves99@gmail.com');
+        } finally {
             submitButton.innerHTML = originalText;
             submitButton.disabled = false;
-        }, 1000);
+        }
     });
 }
 

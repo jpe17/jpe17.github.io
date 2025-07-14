@@ -2,8 +2,19 @@ from flask import Flask, render_template, jsonify, request
 import json
 import os
 from datetime import datetime
+from flask_mail import Mail, Message
 
 app = Flask(__name__)
+
+# Email configuration
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'joaopaesteves99@gmail.com'  # Your email
+app.config['MAIL_PASSWORD'] = os.environ.get('EMAIL_PASSWORD')  # Set this as environment variable
+app.config['MAIL_DEFAULT_SENDER'] = 'joaopaesteves99@gmail.com'
+
+mail = Mail(app)
 
 # Load projects data
 def load_projects():
@@ -118,8 +129,26 @@ def get_stats():
 @app.route('/api/contact', methods=['POST'])
 def contact():
     data = request.json
-    # In a real app, you'd save this to a database or send an email
-    return jsonify({"status": "success", "message": "Message received!"})
+    
+    try:
+        # Create email message
+        msg = Message(
+            subject=f"New Contact Form Message from {data.get('name', 'Unknown')}",
+            recipients=['joaopaesteves99@gmail.com'],
+            body=f"""
+Name: {data.get('name', 'Not provided')}
+Email: {data.get('email', 'Not provided')}
+Message: {data.get('message', 'No message')}
+            """.strip()
+        )
+        
+        # Send email
+        mail.send(msg)
+        
+        return jsonify({"status": "success", "message": "Message sent successfully!"})
+    except Exception as e:
+        print(f"Email error: {e}")
+        return jsonify({"status": "error", "message": "Failed to send message"}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000) 
