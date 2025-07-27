@@ -749,6 +749,76 @@ section {
     box-shadow: 0 10px 30px rgba(0, 168, 255, 0.1);
 }
 
+/* Video Section */
+.video {
+    background: var(--bg-primary);
+    position: relative;
+}
+
+.video::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 70%, rgba(0, 168, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(100, 181, 246, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.video-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-xxl);
+    align-items: center;
+}
+
+.video-description h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    font-family: var(--font-mono);
+}
+
+.video-description p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.video-container {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 168, 255, 0.2);
+    backdrop-filter: blur(15px);
+    padding: var(--spacing-md);
+    transition: all 0.3s ease;
+}
+
+.video-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 168, 255, 0.2);
+    border-color: rgba(0, 168, 255, 0.4);
+}
+
+.featured-video {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 12px;
+    background: var(--bg-secondary);
+}
+
+.featured-video:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+}
+
 .education-card i {
     font-size: 2rem;
     color: var(--primary);
@@ -1234,6 +1304,23 @@ section {
     50% { opacity: 1; }
 }
 
+/* Video Section Mobile Responsive */
+@media (max-width: 768px) {
+    .video-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        text-align: center;
+    }
+    
+    .video-description h3 {
+        font-size: 1.5rem;
+    }
+    
+    .video-container {
+        padding: var(--spacing-sm);
+    }
+}
+
 /* Modern Mobile Navigation */
 @media (max-width: 768px) {
     /* Mobile Navigation Menu */
@@ -1545,4 +1632,4 @@ section {
 
 .section-title:hover::before {
     opacity: 1;
-} 
+}  
