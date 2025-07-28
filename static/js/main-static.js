@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeContactForm();
     initializeNeuralNetwork();
     initializeAdvancedAnimations();
+    initializeVideoSection();
     
     // Hide loading screen after everything loads
     setTimeout(hideLoadingScreen, 1500);
@@ -678,6 +679,46 @@ document.addEventListener('click', (e) => {
 });
 
 // Advanced animations and interactions
+// Initialize video section animations and functionality
+function initializeVideoSection() {
+    const videoSection = document.querySelector('#video');
+    const videoElement = document.querySelector('.featured-video');
+    
+    if (videoSection && videoElement) {
+        // Add fade-in animation to video section
+        videoSection.classList.add('fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    const videoContainer = entry.target.querySelector('.video-container');
+                    if (videoContainer) {
+                        setTimeout(() => {
+                            videoContainer.style.transform = 'translateY(0)';
+                            videoContainer.style.opacity = '1';
+                        }, 200);
+                    }
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        observer.observe(videoSection);
+        
+        // Initialize video container animation state
+        const videoContainer = videoSection.querySelector('.video-container');
+        if (videoContainer) {
+            videoContainer.style.transform = 'translateY(20px)';
+            videoContainer.style.opacity = '0';
+            videoContainer.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        }
+    }
+}
+
 function initializeAdvancedAnimations() {
     let ticking = false;
     
@@ -802,4 +843,4 @@ window.addEventListener('scroll', () => {
             particle.style.transform = '';
         });
     }
-}); 
+});  
