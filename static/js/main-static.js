@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeContactForm();
     initializeNeuralNetwork();
     initializeAdvancedAnimations();
+    initializeVideoSection();
     
     // Hide loading screen after everything loads
     setTimeout(hideLoadingScreen, 1500);
@@ -802,4 +803,97 @@ window.addEventListener('scroll', () => {
             particle.style.transform = '';
         });
     }
-}); 
+});
+
+// Video Section Functionality
+function initializeVideoSection() {
+    const video = document.getElementById('featured-video');
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const progressBar = document.getElementById('progress-bar');
+    const progressContainer = document.querySelector('.progress-container');
+    const currentTimeSpan = document.getElementById('current-time');
+    const durationSpan = document.getElementById('duration');
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+    
+    if (!video || !playPauseBtn || !progressBar) return;
+    
+    // Initialize video section with fade-in animation
+    const videoSection = document.querySelector('.video-section');
+    if (videoSection) {
+        videoSection.classList.add('fade-in');
+    }
+    
+    // Play/Pause functionality
+    playPauseBtn.addEventListener('click', function() {
+        if (video.paused) {
+            video.play();
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        } else {
+            video.pause();
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }
+    });
+    
+    // Update progress bar and time
+    video.addEventListener('timeupdate', function() {
+        const progress = (video.currentTime / video.duration) * 100;
+        progressBar.style.width = progress + '%';
+        
+        currentTimeSpan.textContent = formatTime(video.currentTime);
+    });
+    
+    video.addEventListener('loadedmetadata', function() {
+        durationSpan.textContent = formatTime(video.duration);
+    });
+    
+    // Seek functionality
+    progressContainer.addEventListener('click', function(e) {
+        const rect = progressContainer.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const width = rect.width;
+        const percentage = clickX / width;
+        const newTime = percentage * video.duration;
+        video.currentTime = newTime;
+    });
+    
+    // Fullscreen functionality
+    fullscreenBtn.addEventListener('click', function() {
+        if (video.requestFullscreen) {
+            video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) {
+            video.msRequestFullscreen();
+        }
+    });
+    
+    video.addEventListener('ended', function() {
+        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        progressBar.style.width = '0%';
+        video.currentTime = 0;
+    });
+    
+    video.addEventListener('error', function() {
+        console.warn('Video failed to load. This may be due to browser compatibility with .mov format.');
+        const videoWrapper = document.querySelector('.video-wrapper');
+        if (videoWrapper) {
+            videoWrapper.innerHTML = `
+                <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 1rem; color: var(--secondary);"></i>
+                    <p>Video format not supported in this browser.</p>
+                    <a href="static/videos/glass_half_empty.mov" download style="color: var(--primary); text-decoration: none;">
+                        <i class="fas fa-download"></i> Download Video
+                    </a>
+                </div>
+            `;
+        }
+    });
+}
+
+function formatTime(seconds) {
+    if (isNaN(seconds)) return '0:00';
+    
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+}     
