@@ -1099,6 +1099,91 @@ section {
     border: 1px solid rgba(100, 181, 246, 0.3);
 }
 
+/* Video Section */
+.video {
+    padding: var(--spacing-xxl) 0;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.video::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 168, 255, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.video-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.video-player {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+}
+
+.video-player:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 168, 255, 0.2), 
+                0 0 0 1px rgba(0, 168, 255, 0.3);
+}
+
+.video-description {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.video-description p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .video {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .video-container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .video-player {
+        border-radius: 8px;
+    }
+    
+    .video-description {
+        margin-top: var(--spacing-md);
+        padding: var(--spacing-sm);
+    }
+    
+    .video-description p {
+        font-size: 1rem;
+    }
+}
+
 /* Contact Section */
 .contact {
     background: var(--bg-secondary);
@@ -1545,4 +1630,4 @@ section {
 
 .section-title:hover::before {
     opacity: 1;
-} 
+}  
