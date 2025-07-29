@@ -479,8 +479,8 @@ function addFadeInAnimations() {
         });
     }, observerOptions);
     
-    // Observe all new fade-in elements
-    document.querySelectorAll('.fade-in:not(.visible)').forEach(el => {
+    // Observe all new fade-in elements including video section
+    document.querySelectorAll('.fade-in:not(.visible), .video').forEach(el => {
         observer.observe(el);
     });
 }
@@ -802,4 +802,4 @@ window.addEventListener('scroll', () => {
             particle.style.transform = '';
         });
     }
-}); 
+});  
