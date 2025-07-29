@@ -314,6 +314,12 @@ function initializeScrollAnimations() {
     document.querySelectorAll('.fade-in').forEach(el => {
         observer.observe(el);
     });
+    
+    // Also observe video section elements
+    document.querySelectorAll('#video .video-content, #video .video-container, #video .video-description').forEach(el => {
+        el.classList.add('fade-in');
+        observer.observe(el);
+    });
 }
 
 // Animate skill progress bars
@@ -802,4 +808,4 @@ window.addEventListener('scroll', () => {
             particle.style.transform = '';
         });
     }
-}); 
+});  
