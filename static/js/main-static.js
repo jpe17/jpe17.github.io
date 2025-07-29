@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeContactForm();
     initializeNeuralNetwork();
     initializeAdvancedAnimations();
+    initializeVideoSection();
     
     // Hide loading screen after everything loads
     setTimeout(hideLoadingScreen, 1500);
@@ -802,4 +803,78 @@ window.addEventListener('scroll', () => {
             particle.style.transform = '';
         });
     }
-}); 
+});  
+
+function initializeVideoSection() {
+    const video = document.getElementById('featured-video');
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const progressContainer = document.querySelector('.progress-container');
+    const progressFill = document.querySelector('.progress-fill');
+    const currentTimeSpan = document.getElementById('current-time');
+    const durationSpan = document.getElementById('duration');
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+
+    if (!video || !playPauseBtn) return;
+
+    // Play/Pause functionality
+    playPauseBtn.addEventListener('click', () => {
+        if (video.paused) {
+            video.play();
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        } else {
+            video.pause();
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }
+    });
+
+    // Update progress bar and time display
+    video.addEventListener('timeupdate', () => {
+        const progress = (video.currentTime / video.duration) * 100;
+        progressFill.style.width = `${progress}%`;
+        
+        currentTimeSpan.textContent = formatTime(video.currentTime);
+    });
+
+    video.addEventListener('loadedmetadata', () => {
+        durationSpan.textContent = formatTime(video.duration);
+    });
+
+    progressContainer.addEventListener('click', (e) => {
+        const rect = progressContainer.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const width = rect.width;
+        const clickTime = (clickX / width) * video.duration;
+        video.currentTime = clickTime;
+    });
+
+    // Fullscreen functionality
+    if (fullscreenBtn) {
+        fullscreenBtn.addEventListener('click', () => {
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.webkitRequestFullscreen) {
+                video.webkitRequestFullscreen();
+            } else if (video.msRequestFullscreen) {
+                video.msRequestFullscreen();
+            }
+        });
+    }
+
+    video.addEventListener('ended', () => {
+        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        progressFill.style.width = '0%';
+        video.currentTime = 0;
+    });
+
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = Math.floor(seconds % 60);
+        return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+    }
+
+    // Add fade-in animation to video section
+    const videoSection = document.querySelector('.video-section');
+    if (videoSection) {
+        videoSection.classList.add('fade-in');
+    }
+}    
