@@ -380,7 +380,7 @@ body {
     animation: gradientShift 4s ease-in-out infinite;
     text-shadow: 0 0 30px rgba(0, 168, 255, 0.5);
     /* Min height to prevent major layout shifts but allow text to show */
-    min-height: 6rem;
+    min-height: 8rem;
     line-height: 1.2;
 }
 
@@ -1315,7 +1315,7 @@ section {
         font-size: clamp(2rem, 10vw, 3.5rem);
         margin-bottom: 1rem;
         /* Min height on mobile to prevent major layout shifts */
-        min-height: 4rem;
+        min-height: 6rem;
     }
 
     .hero-description {
@@ -1545,4 +1545,4 @@ section {
 
 .section-title:hover::before {
     opacity: 1;
-} 
+}  
