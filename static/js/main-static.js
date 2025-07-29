@@ -479,6 +479,19 @@ function addFadeInAnimations() {
         });
     }, observerOptions);
     
+    // Add fade-in class to video section elements
+    const videoElements = [
+        '.video-section',
+        '.video-container', 
+        '.video-description'
+    ];
+    
+    videoElements.forEach(selector => {
+        document.querySelectorAll(selector).forEach(el => {
+            el.classList.add('fade-in');
+        });
+    });
+    
     // Observe all new fade-in elements
     document.querySelectorAll('.fade-in:not(.visible)').forEach(el => {
         observer.observe(el);
@@ -802,4 +815,4 @@ window.addEventListener('scroll', () => {
             particle.style.transform = '';
         });
     }
-}); 
+});  
