@@ -1099,6 +1099,71 @@ section {
     border: 1px solid rgba(100, 181, 246, 0.3);
 }
 
+/* Video Section */
+.video {
+    padding: var(--spacing-xxl) 0;
+    background: var(--bg-primary);
+    position: relative;
+}
+
+.video-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.video-container {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    padding: var(--spacing-lg);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+.video-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 168, 255, 0.1);
+    border-color: rgba(0, 168, 255, 0.3);
+}
+
+.featured-video {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    border-radius: 12px;
+    background: var(--bg-secondary);
+    object-fit: contain;
+}
+
+.featured-video::-webkit-media-controls-panel {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.video-description {
+    padding: var(--spacing-lg);
+}
+
+.video-description h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    color: var(--primary);
+    font-family: var(--font-mono);
+}
+
+.video-description p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
 /* Contact Section */
 .contact {
     background: var(--bg-secondary);
@@ -1416,6 +1481,28 @@ section {
         gap: var(--spacing-lg);
     }
 
+    .video-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        text-align: center;
+    }
+
+    .video-container {
+        padding: var(--spacing-md);
+    }
+
+    .featured-video {
+        max-height: 250px;
+    }
+
+    .video-description {
+        padding: var(--spacing-md);
+    }
+
+    .video-description h3 {
+        font-size: 1.5rem;
+    }
+
     .hero-buttons {
         flex-direction: column;
         gap: 1rem;
@@ -1545,4 +1632,4 @@ section {
 
 .section-title:hover::before {
     opacity: 1;
-} 
+}    
