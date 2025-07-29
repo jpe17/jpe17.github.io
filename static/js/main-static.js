@@ -338,6 +338,7 @@ async function loadStaticContent() {
         renderProjects(projects);
         renderSkills(skills);
         renderExperiences(experiences);
+        initializeVideoSection();
         
         // Add fade-in animations
         addFadeInAnimations();
@@ -457,6 +458,20 @@ function renderExperiences(experiences) {
     `).join('');
     
     experiencesContainer.innerHTML = experiencesHTML;
+}
+
+// Initialize video section
+function initializeVideoSection() {
+    const videoSection = document.getElementById('video');
+    if (videoSection) {
+        videoSection.classList.add('fade-in');
+        
+        const videoContainer = videoSection.querySelector('.video-container');
+        const videoDescription = videoSection.querySelector('.video-description');
+        
+        if (videoContainer) videoContainer.classList.add('fade-in');
+        if (videoDescription) videoDescription.classList.add('fade-in');
+    }
 }
 
 // Add fade-in animations to dynamically loaded content
@@ -802,4 +817,4 @@ window.addEventListener('scroll', () => {
             particle.style.transform = '';
         });
     }
-}); 
+});    
