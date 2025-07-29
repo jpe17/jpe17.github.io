@@ -1177,6 +1177,126 @@ section {
     color: var(--text-muted);
 }
 
+/* Video Section */
+.video {
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 20, 40, 0.95) 100%);
+    position: relative;
+}
+
+.video-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.video-container {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 168, 255, 0.3);
+    backdrop-filter: blur(15px);
+    padding: var(--spacing-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.video-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 168, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.video-container:hover::before {
+    left: 100%;
+}
+
+.featured-video {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    background: #000;
+    max-height: 450px;
+    object-fit: contain;
+}
+
+.featured-video::-webkit-media-controls-panel {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.video-description {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 168, 255, 0.3);
+    backdrop-filter: blur(15px);
+    padding: var(--spacing-lg);
+    width: 100%;
+}
+
+.video-description h3 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
+}
+
+.video-description p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Mobile responsive for video section */
+@media (max-width: 768px) {
+    .video {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .video-content {
+        gap: var(--spacing-md);
+    }
+    
+    .video-container {
+        padding: var(--spacing-sm);
+    }
+    
+    .featured-video {
+        max-height: 300px;
+    }
+    
+    .video-description {
+        padding: var(--spacing-md);
+    }
+    
+    .video-description h3 {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .featured-video {
+        max-height: 250px;
+    }
+    
+    .video-description h3 {
+        font-size: 1.1rem;
+    }
+    
+    .video-description p {
+        font-size: 0.9rem;
+    }
+}
+
 /* Footer */
 .footer {
     background: var(--bg-primary);
@@ -1545,4 +1665,4 @@ section {
 
 .section-title:hover::before {
     opacity: 1;
-} 
+}  
