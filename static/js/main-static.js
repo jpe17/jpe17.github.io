@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeContactForm();
     initializeNeuralNetwork();
     initializeAdvancedAnimations();
+    initializeVideoSection();
     
     // Hide loading screen after everything loads
     setTimeout(hideLoadingScreen, 1500);
@@ -678,6 +679,48 @@ document.addEventListener('click', (e) => {
 });
 
 // Advanced animations and interactions
+// Video Section functionality
+function initializeVideoSection() {
+    const video = document.getElementById('glass-half-empty-video');
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const videoOverlay = document.getElementById('video-overlay');
+    const playButtonLarge = videoOverlay?.querySelector('.play-button-large');
+    
+    if (!video || !playPauseBtn || !videoOverlay) return;
+    
+    // Play/pause functionality
+    function togglePlayPause() {
+        if (video.paused) {
+            video.play();
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            videoOverlay.classList.add('hidden');
+        } else {
+            video.pause();
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            videoOverlay.classList.remove('hidden');
+        }
+    }
+    
+    // Event listeners
+    playPauseBtn.addEventListener('click', togglePlayPause);
+    playButtonLarge?.addEventListener('click', togglePlayPause);
+    videoOverlay.addEventListener('click', togglePlayPause);
+    
+    video.addEventListener('ended', function() {
+        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        videoOverlay.classList.remove('hidden');
+    });
+    
+    video.addEventListener('loadedmetadata', function() {
+        console.log('Video loaded successfully');
+    });
+    
+    video.addEventListener('error', function(e) {
+        console.error('Video error:', e);
+        videoOverlay.innerHTML = '<div class="video-error">Video could not be loaded</div>';
+    });
+}
+
 function initializeAdvancedAnimations() {
     let ticking = false;
     
@@ -802,4 +845,4 @@ window.addEventListener('scroll', () => {
             particle.style.transform = '';
         });
     }
-}); 
+});  
