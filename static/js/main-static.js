@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeScrollAnimations();
     loadStaticContent();
     initializeContactForm();
+    initializeVideoSection();
     initializeNeuralNetwork();
     initializeAdvancedAnimations();
     
@@ -532,6 +533,57 @@ function initializeContactForm() {
     });
 }
 
+function initializeVideoSection() {
+    const video = document.getElementById('featured-video');
+    if (!video) return;
+
+    // Add custom video controls and interactions
+    video.addEventListener('loadedmetadata', function() {
+        console.log('Video metadata loaded');
+    });
+
+    video.addEventListener('error', function(e) {
+        console.error('Video loading error:', e);
+        const videoWrapper = video.parentElement;
+        if (videoWrapper) {
+            videoWrapper.innerHTML = `
+                <div class="video-error">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Video could not be loaded. Please check your connection.</p>
+                </div>
+            `;
+        }
+    });
+
+    const videoSection = document.getElementById('video');
+    if (videoSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting && !video.paused) {
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        observer.observe(videoSection);
+    }
+
+    // Add play/pause on click functionality
+    const videoWrapper = video.parentElement;
+    if (videoWrapper) {
+        videoWrapper.addEventListener('click', function(e) {
+            if (e.target === video) return; // Let native controls handle clicks on video
+            
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
+    }
+}
+
+
 // Initialize neural network animation
 function initializeNeuralNetwork() {
     const neurons = document.querySelectorAll('.neuron');
@@ -802,4 +854,4 @@ window.addEventListener('scroll', () => {
             particle.style.transform = '';
         });
     }
-}); 
+});    
