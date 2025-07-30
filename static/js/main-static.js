@@ -306,6 +306,11 @@ function initializeScrollAnimations() {
                 if (entry.target.classList.contains('skill-item')) {
                     animateSkillBar(entry.target);
                 }
+                
+                // Handle video section animations
+                if (entry.target.id === 'video') {
+                    initializeVideoAnimations();
+                }
             }
         });
     }, observerOptions);
@@ -314,6 +319,12 @@ function initializeScrollAnimations() {
     document.querySelectorAll('.fade-in').forEach(el => {
         observer.observe(el);
     });
+    
+    // Observe video section
+    const videoSection = document.getElementById('video');
+    if (videoSection) {
+        observer.observe(videoSection);
+    }
 }
 
 // Animate skill progress bars
@@ -341,6 +352,9 @@ async function loadStaticContent() {
         
         // Add fade-in animations
         addFadeInAnimations();
+        
+        // Initialize video section
+        initializeVideoSection();
         
     } catch (error) {
         console.error('Error loading static content:', error);
@@ -789,6 +803,7 @@ window.addEventListener('scroll', () => {
     }
     
     // Clean up hero effects when scrolled past
+    const scrolled = window.pageYOffset;
     const heroHeight = window.innerHeight;
     if (scrolled > heroHeight) {
         const neuralNetwork = document.querySelector('.neural-network');
@@ -802,4 +817,81 @@ window.addEventListener('scroll', () => {
             particle.style.transform = '';
         });
     }
-}); 
+});
+
+// Video Section Functions
+function initializeVideoSection() {
+    const videoSection = document.getElementById('video');
+    const video = document.getElementById('featured-video');
+    
+    if (videoSection && video) {
+        // Add fade-in class to video section elements
+        videoSection.classList.add('fade-in');
+        
+        // Handle video loading and error states
+        video.addEventListener('loadstart', function() {
+            console.log('Video loading started');
+        });
+        
+        video.addEventListener('canplay', function() {
+            console.log('Video can start playing');
+        });
+        
+        video.addEventListener('error', function(e) {
+            console.error('Video error:', e);
+            showVideoFallback();
+        });
+        
+        // Optimize video loading
+        video.preload = 'metadata';
+    }
+}
+
+function initializeVideoAnimations() {
+    const videoContainer = document.querySelector('.video-container');
+    const videoInfo = document.querySelector('.video-info');
+    
+    if (videoContainer) {
+        setTimeout(() => {
+            videoContainer.style.opacity = '0';
+            videoContainer.style.transform = 'translateX(-50px)';
+            videoContainer.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            
+            setTimeout(() => {
+                videoContainer.style.opacity = '1';
+                videoContainer.style.transform = 'translateX(0)';
+            }, 100);
+        }, 200);
+    }
+    
+    if (videoInfo) {
+        setTimeout(() => {
+            videoInfo.style.opacity = '0';
+            videoInfo.style.transform = 'translateX(50px)';
+            videoInfo.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            
+            setTimeout(() => {
+                videoInfo.style.opacity = '1';
+                videoInfo.style.transform = 'translateX(0)';
+            }, 100);
+        }, 400);
+    }
+}
+
+function showVideoFallback() {
+    const videoContainer = document.querySelector('.video-container');
+    if (videoContainer) {
+        videoContainer.innerHTML = `
+            <div class="video-fallback">
+                <div class="fallback-content">
+                    <i class="fas fa-play-circle" style="font-size: 4rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                    <h3>Video Unavailable</h3>
+                    <p>Your browser doesn't support this video format.</p>
+                    <a href="static/videos/glass_half_empty.mov" class="btn btn-primary" download>
+                        <i class="fas fa-download"></i> Download Video
+                    </a>
+                </div>
+            </div>
+        `;
+    }
+}       

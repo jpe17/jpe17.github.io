@@ -1099,6 +1099,80 @@ section {
     border: 1px solid rgba(100, 181, 246, 0.3);
 }
 
+/* Video Section */
+.video {
+    background: var(--bg-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.video-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.video-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 168, 255, 0.2);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 168, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.video-container:hover {
+    border-color: rgba(0, 168, 255, 0.4);
+    box-shadow: 0 12px 40px rgba(0, 168, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+.featured-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+    background: var(--bg-tertiary);
+}
+
+.featured-video::-webkit-media-controls-panel {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.featured-video::-webkit-media-controls-play-button,
+.featured-video::-webkit-media-controls-volume-slider,
+.featured-video::-webkit-media-controls-timeline {
+    filter: brightness(1.2) saturate(1.1);
+}
+
+.video-info {
+    padding: var(--spacing-lg);
+}
+
+.video-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.video-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-lg);
+}
+
 /* Contact Section */
 .contact {
     background: var(--bg-secondary);
@@ -1411,6 +1485,20 @@ section {
         grid-template-columns: 1fr;
     }
 
+    .video-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        text-align: center;
+    }
+
+    .video-info {
+        padding: var(--spacing-md);
+    }
+
+    .video-title {
+        font-size: 2rem;
+    }
+
     .contact-content {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
@@ -1545,4 +1633,4 @@ section {
 
 .section-title:hover::before {
     opacity: 1;
-} 
+}    
