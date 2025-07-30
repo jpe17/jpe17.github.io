@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeContactForm();
     initializeNeuralNetwork();
     initializeAdvancedAnimations();
+    initializeVideoSection();
     
     // Hide loading screen after everything loads
     setTimeout(hideLoadingScreen, 1500);
@@ -782,9 +783,9 @@ function initializeAdvancedAnimations() {
 // Add scroll-based navbar transparency and cleanup
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
+    const scrolled = window.pageYOffset;
+    
     if (navbar) {
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.5;
         navbar.style.background = `rgba(10, 10, 10, ${Math.max(0.7, Math.min(0.95, 0.95 - scrolled * 0.001))})`;
     }
     
@@ -802,4 +803,31 @@ window.addEventListener('scroll', () => {
             particle.style.transform = '';
         });
     }
-}); 
+});
+
+// Initialize video section functionality
+function initializeVideoSection() {
+    const video = document.getElementById('glass-half-empty-video');
+    if (video) {
+        video.addEventListener('loadstart', () => {
+            console.log('Video loading started');
+        });
+        
+        video.addEventListener('canplay', () => {
+            console.log('Video can start playing');
+        });
+        
+        video.addEventListener('error', (e) => {
+            console.error('Video error:', e);
+            showErrorMessage('Video failed to load. Please try refreshing the page.');
+        });
+        
+        video.addEventListener('play', () => {
+            console.log('Video started playing');
+        });
+        
+        video.addEventListener('pause', () => {
+            console.log('Video paused');
+        });
+    }
+}       
